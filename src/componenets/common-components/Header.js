@@ -14,6 +14,9 @@ import ListItemText from "@material-ui/core/ListItemText";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
+import { withStyles } from "@material-ui/core/styles";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 
 const useStyles = makeStyles({
   Button: {
@@ -26,6 +29,11 @@ const useStyles = makeStyles({
       fontSize: "1.1rem",
     },
   },
+  buttonOnHover: {
+    "&:hover": {
+      color: "#20C679 !important",
+    },
+  },
   button__overlay: {
     position: "absolute",
     backgroundColor: "#000",
@@ -33,7 +41,6 @@ const useStyles = makeStyles({
     height: "100%",
     width: "100%",
     transition: "opacity 0.5s",
-    "&:hover": {},
   },
   list: {
     width: 200,
@@ -44,6 +51,14 @@ const useStyles = makeStyles({
     "&>span": {
       fontSize: "1.2rem !important",
     },
+  },
+  menuButton: {
+    padding: "1vw 4vw",
+    backgroundColor: "#20C679",
+    color: "#fff",
+    marginRight: "9vw",
+    borderRadius: 0,
+    "&:hover": {},
   },
 });
 
@@ -105,6 +120,50 @@ export default function Header() {
   function ChangeHeader() {
     const matches = useMediaQuery("(min-width:600px)");
 
+    const StyledMenu = withStyles({
+      paper: {
+        borderTop: "5px solid #20C679",
+        borderRadius: 0,
+        backgroundColor: "rgba(0,0,0,0.6)",
+        margin: 0,
+        padding: 0,
+      },
+    })((props) => (
+      <Menu
+        elevation={0}
+        getContentAnchorEl={null}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "center",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "center",
+        }}
+        {...props}
+      />
+    ));
+
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [anchorEl1, setAnchorEl1] = useState(null);
+
+    const handleClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
+
+    const handleClick1 = (event) => {
+      setAnchorEl1(event.currentTarget);
+    };
+
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
+    const handleClose1 = () => {
+      setAnchorEl1(null);
+    };
+
+    const StyledMenuItem = withStyles((theme) => ({}))(MenuItem);
+
     if (!matches) {
       return (
         <AppBar className="header">
@@ -134,47 +193,112 @@ export default function Header() {
       <>
         <div className="header">
           <div className="content">
-            <Button
-              style={{
-                padding: "0.5vw 3vw",
-                backgroundColor: "#20C679",
-                color: "#fff",
-                marginRight: "7.5vw",
-              }}
-            >
-              <b style={{ fontSize: "1.1rem" }}>حمایت از موسسه</b>
+            <Button className={classes.menuButton}>
+              <b>حمایت از موسسه</b>
             </Button>
             <Link to={`/News`} className={`link ${classes.Button}`}>
-              <Button style={{ padding: "0 2vw" }}>
+              <Button
+                style={{ padding: "0 2vw" }}
+                className={classes.buttonOnHover}
+              >
                 <div className={classes.button__overlay} />
                 اخبار و اطلاعیه ها
               </Button>
             </Link>
             <Link to={`/Philanthropists`} className={`link ${classes.Button}`}>
-              <Button style={{ padding: "0 2vw" }}>
+              <Button
+                style={{ padding: "0 2vw" }}
+                className={classes.buttonOnHover}
+              >
                 <div className={classes.button__overlay} />
                 خیرین
               </Button>
             </Link>
             <Link to={`/`} className={`link ${classes.Button}`}>
-              <Button style={{ padding: "0 2vw" }}>
-                <div className={classes.button__overlay} />
-                درباره خیرین خوزستان
+              <Button
+                style={{ padding: "0 2vw" }}
+                className={classes.buttonOnHover}
+              >
+                <div
+                  className={classes.button__overlay}
+                  onMouseOver={handleClick1}
+                  aria-controls="customized-menu1"
+                  aria-haspopup="true"
+                />
+                درباره خیرین
               </Button>
             </Link>
+            <StyledMenu
+              id="customized-menu1"
+              anchorEl={anchorEl1}
+              open={Boolean(anchorEl1)}
+              onClose={handleClose1}
+            >
+              <StyledMenuItem>
+                <ListItemText
+                  primary="تاریخچه موسسه"
+                  style={{ textAlign: "right", color: "#fff" }}
+                />
+              </StyledMenuItem>
+              <StyledMenuItem>
+                <ListItemText
+                  primary="تقدیرنامه ها"
+                  style={{ textAlign: "right", color: "#fff" }}
+                />
+              </StyledMenuItem>
+            </StyledMenu>
             <Link to={`/Projects`} className={`link ${classes.Button}`}>
-              <Button style={{ padding: "0 2vw" }}>
+              <Button
+                style={{ padding: "0 2vw" }}
+                className={classes.buttonOnHover}
+                aria-controls="customized-menu"
+                aria-haspopup="true"
+                onMouseOver={handleClick}
+              >
                 <div className={classes.button__overlay} />
                 پروژه ها
               </Button>
             </Link>
+            <StyledMenu
+              id="customized-menu"
+              anchorEl={anchorEl}
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              <StyledMenuItem>
+                <ListItemText
+                  primary="پروژه های نیمه تمام"
+                  style={{ textAlign: "right", color: "#fff" }}
+                />
+              </StyledMenuItem>
+              <StyledMenuItem>
+                <ListItemText
+                  primary="پروژه های بازسازی تخریبی"
+                  style={{ textAlign: "right", color: "#fff" }}
+                />
+              </StyledMenuItem>
+              <StyledMenuItem>
+                <ListItemText
+                  primary="پروژه های ساخته شده"
+                  style={{ textAlign: "right", color: "#fff" }}
+                />
+              </StyledMenuItem>
+              <StyledMenuItem>
+                <ListItemText
+                  primary="پروژه های درحال انجام"
+                  style={{ textAlign: "right", color: "#fff" }}
+                />
+              </StyledMenuItem>
+            </StyledMenu>
             <Link to={`/`} className={`link ${classes.Button}`}>
-              <Button style={{ padding: "0 2vw" }}>
+              <Button
+                style={{ padding: "0 2vw" }}
+                className={classes.buttonOnHover}
+              >
                 <div className={classes.button__overlay} />
                 خانه
               </Button>
             </Link>
-
             <img className="media" src={Logo} alt="khayerin logo" />
           </div>
         </div>
