@@ -1,0 +1,71 @@
+.card{
+    padding: 1em;
+    border-radius: 6px;
+}
+.card, .projects{
+    margin: 1em auto;
+}
+.project-pic{
+    border-radius: 4px;
+    max-width: 30%;
+    max-height: 30%;
+}
+.info-div{
+    background-color: #CDAC81;
+    border-radius: 6px;
+    padding: 1em;
+}
+.title{
+    color: #2d2424;
+}
+.info h3{
+    color: #2d2424;
+}
+@media screen and (max-width: 3000px) and (min-width: 1024px){
+    .info{
+        display: flex;
+        justify-content: flex-end;
+        gap: 7%;
+        align-items: center;
+    }
+    .details{
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        direction: rtl;
+    }
+    .card{
+        width: 50%;
+    }
+    .projects{
+        width: 45%;
+    }
+    
+}
+@media screen and (max-width: 1024px) and (min-width: 464px){
+    .info{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        direction: rtl;
+    }
+    .details{
+        display: block;
+    }
+    .project-pic{
+        max-width: 35%;
+        max-height: 35%;
+    }
+}
+@media screen and (max-width: 464px){
+    .info{
+        display: block;
+    }
+    .details{
+        display: block;
+    }
+    .project-pic{
+        max-width: 60%;
+        max-height: 60%;
+    }
+}

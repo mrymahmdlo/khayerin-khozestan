@@ -1,0 +1,30 @@
+.additional {
+    width: 100%;
+}
+.back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0.9em;
+    width: 100%;
+    background-color: #CDAC81;
+    border-radius: 5px;
+}
+.back > *:not(.additionl__number) {
+    margin-bottom: 0.7em !important;
+}
+.add-title {
+    margin-top: 2.3em;
+    margin-bottom: 0.5em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    text-align: right;
+}
+.add-title > .title-text {
+    color: #4a4a4a;
+    font-weight: 700 !important;
+    font-size: 1.35rem;
+}
