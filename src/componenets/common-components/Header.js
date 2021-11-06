@@ -156,7 +156,7 @@ export default function Header() {
                 خیرین
               </Button>
             </Link>
-            <Link to={`/`} className={`link ${classes.Button}`}>
+            <Link to={`/About`} className={`link ${classes.Button}`}>
               <Button style={{ padding: "0 2vw" }}>
                 <div className={classes.button__overlay} />
                 درباره خیرین خوزستان
