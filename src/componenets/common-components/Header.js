@@ -52,14 +52,6 @@ const useStyles = makeStyles({
       fontSize: "1.2rem !important",
     },
   },
-  menuButton: {
-    padding: "1vw 4vw",
-    backgroundColor: "#20C679",
-    color: "#fff",
-    marginRight: "9vw",
-    borderRadius: 0,
-    "&:hover": {},
-  },
 });
 
 export default function Header() {
@@ -179,6 +171,7 @@ export default function Header() {
               className={classes.menuButton}
               color="inherit"
               aria-label="menu"
+              style={{color: "#010A1F"}}
             >
               <MenuIcon fontSize="large" />
             </IconButton>
@@ -193,9 +186,9 @@ export default function Header() {
       <>
         <div className="header">
           <div className="content">
-            <Button className={classes.menuButton}>
-              <b>حمایت از موسسه</b>
-            </Button>
+              <button className="btn1">
+                <b>حمایت از موسسه</b>
+              </button>
             <Link to={`/News`} className={`link ${classes.Button}`}>
               <Button
                 style={{ padding: "0 2vw" }}
@@ -221,7 +214,7 @@ export default function Header() {
               >
                 <div
                   className={classes.button__overlay}
-                  onMouseOver={handleClick1}
+                  onClick={handleClick1}
                   aria-controls="customized-menu1"
                   aria-haspopup="true"
                 />
@@ -253,7 +246,7 @@ export default function Header() {
                 className={classes.buttonOnHover}
                 aria-controls="customized-menu"
                 aria-haspopup="true"
-                onMouseOver={handleClick}
+                onClick={handleClick}
               >
                 <div className={classes.button__overlay} />
                 پروژه ها

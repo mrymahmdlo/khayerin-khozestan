@@ -42,3 +42,17 @@
     max-height: 80%;
     margin-left: 15px;
 }
+.btn1 {
+    padding: 1vw 4vw ;
+    background-color: #20C679;
+    color: #fff;
+    margin-right: 9vw;
+    border-radius: 0;
+    font-size: 0.9rem;
+    position: relative;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    border: none;
+}
+
+

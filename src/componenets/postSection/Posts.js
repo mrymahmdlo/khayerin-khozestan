@@ -8,7 +8,6 @@ import './PostCard.css';
 
 const useStyles = makeStyles(() => ({
     root: {
-        marginTop: '5em',
         display: 'flex',
         flexDirection: 'row-reverse',
         height: 'auto',

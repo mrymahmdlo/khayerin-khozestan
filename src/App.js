@@ -19,7 +19,7 @@ function App() {
       <Container maxWidth="lg">
         <Router>
           <Header />
-          <div style={{marginBottom:"1em"}}></div>
+          <div style={{marginBottom:"5em"}}></div>
           <Switch>
             <Route path='/Philanthropists' exact component={AllPhilos} />
             <Route path='/Projects' exact component={AllProjects} />

@@ -11,7 +11,7 @@ const base = "http://charity.mykanoon.ir/api";
 
 const useStyles=makeStyles(()=>({
     content: {
-        margin: '1em auto 0',
+        margin: '0 auto ',
         padding: '2em 2em 5em',
         backgroundColor: '#F5F4F4',
         textAlign: "right"

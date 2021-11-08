@@ -9,7 +9,7 @@ import '../common-components/carouselStyle.css';
 const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 4
+      items: 3
     },
     bigTablet: {
       breakpoint: { max: 1024, min: 950 },
@@ -32,7 +32,6 @@ export default function Projects({path, title, projects, theme}) {
   if(projects.data.length < 10) {
     
     for(let i = 2; i < 10; i++) {
-      console.log(i);
       projects.data.push(projects.data[0]);
     }   
   }
@@ -45,8 +44,14 @@ export default function Projects({path, title, projects, theme}) {
                 </Typography>
                 <SchoolIcon fontSize='large' color={backColor} />
               </div>
-              <Carousel responsive={responsive}>
-                {projects.data.map(item => (
+              <Carousel 
+              responsive={responsive}
+              showDots={true}
+              arrows={false}
+              swipeable={true}
+              draggable={true}
+              >
+                {projects.data.slice(0,6).map(item => (
                   <Project
                     key={item.id}
                     id={item.id}

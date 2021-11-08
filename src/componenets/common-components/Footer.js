@@ -16,6 +16,7 @@ const useStyles = makeStyles(() => ({
         height: '100%',
         margin: 0,
         textAlign: 'right',
+        paddingBottom: 70
     },
     item: {
         display: 'flex',
@@ -40,6 +41,9 @@ const useStyles = makeStyles(() => ({
     title__item: {
         width: '100%',
         textAlign: 'right',
+        color: "#fff",
+        marginBottom: 20,
+        marginRight: '8%'
     }
 }));
 
@@ -51,10 +55,9 @@ export default function Footer() {
         <div className='footer'>
             <div className='content footer__content'>
                 <div className={classes.title} style={{paddingTop: 24, paddingBottom: 0}}>
-                <Typography variant='h6' component='h6' className={classes.title__item}>
-                    مجمع خیرین مدرسه ساز سیستان و بلوچستان
+                <Typography variant='h5' component='h5' className={classes.title__item}>
+                    مجمع خیرین مدرسه ساز خوزستان
                 </Typography>
-                <img className='media' src={Logo} alt='khayerin logo' style={{height: '4em'}} />
                 </div>
                 <Grid
                     container
@@ -64,8 +67,8 @@ export default function Footer() {
                     justifyContent='space-around'
                 >
                     <Grid item className={classes.item} xs={12} sm={4}>
-                        <Typography variant='body1' component='h6' >
-                            درباره ما
+                        <Typography variant='body1' component='h6' style={{color:'#fff'}}>
+                            درباره موسسه
                         </Typography>
                         <Divider variant='fullWidth' className={classes.div} />
                         <Typography variant='body2' component='p'>
@@ -73,8 +76,8 @@ export default function Footer() {
                         </Typography>
                     </Grid>
                     <Grid item className={classes.item} xs={12} sm={4}>
-                        <Typography variant='body1' component='h6' >
-                            ارتباط با ما
+                        <Typography variant='body1' component='h6' style={{color:'#fff'}}>
+                            ارتباط با موسسه
                         </Typography>
                         <Divider variant='fullWidth' className={classes.div} />
                         <Typography className={classes.title} variant='body2' component='p'>
