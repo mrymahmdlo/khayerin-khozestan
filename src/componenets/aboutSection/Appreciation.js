@@ -6,6 +6,7 @@ import './Appreciation.css';
 export default function ImagesObj() {
     return(
         <div className='appr'>
+            <h1 className='appr-topic'>تقدیرنامه ها</h1>
             <Grid container>
                 {ImageObj.images.map(item=>(
                     <Grid lg={4} sm={6} xs={12} item>
