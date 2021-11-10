@@ -130,6 +130,7 @@ export default function NewsPage() {
                   title={item.title}
                   description={'text'}
                   id={item.id}
+                  key={item.id}
                   />
                   {/* <div className={classes.post}>
                     <Link to={`/News/${item.id}`}>

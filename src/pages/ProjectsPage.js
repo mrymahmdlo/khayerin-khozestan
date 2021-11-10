@@ -20,7 +20,7 @@ import { create } from "jss";
 import rtl from "jss-rtl";
 import ToFarsiNumber from "../componenets/common-components/Converter";
 import NumberCreator from "../componenets/common-components/NumberCreator";
-import PersonIcon from '@material-ui/icons/Person';
+import PersonIcon from "@material-ui/icons/Person";
 
 const base = "http://charity.mykanoon.ir/api";
 
@@ -84,8 +84,8 @@ const useStyles = makeStyles(() => ({
       display: "flex",
       flexDirection: "column",
       padding: "0px 15px",
-      paddingBottom:'23px',
-      marginBottom:'15px',
+      paddingBottom: "23px",
+      marginBottom: "15px",
       textAlign: "right",
       boxShadow: "0 10px 20px 0 rgb(221 221 221 / 30%)",
       "& .title": {
@@ -100,7 +100,41 @@ const useStyles = makeStyles(() => ({
       "& .text": {
         fontSize: "14px",
         // margin: "10px 0px",
-        color:'#999'
+        color: "#999",
+      },
+    },
+  },
+  category: {
+    padding: "30px 40px",
+    backgroundColor: "#f6f6f6",
+    display: "flex",
+    flexDirection: "column",
+    width: "100%",
+    alignItems: "center",
+    marginTop: "15px",
+    "& .divider": {
+      borderBottom: "1px solid #ece6e6",
+      width: "100%",
+      margin: "15px 0px",
+    },
+    "& .title": {
+      fontSize: "20px",
+      fontWeight: "500",
+      color: "#2d2d2d",
+      textAlign: "right",
+      width: "100%",
+      letterSpacing: "-1.2px",
+    },
+    "& .item": {
+      fontSize: "16px",
+      color: "#10285d",
+      letterSpacing: "-1.2px",
+      textAlign: "right",
+      width: "100%",
+      fontWeight: "300",
+      "&:hover": {
+        color: "#09cc7f",
+        cursor: "pointer",
       },
     },
   },
@@ -127,28 +161,28 @@ const StyledInput = withStyles((theme) =>
   })
 )(InputBase);
 
-const ProjectComponent = ({ imgSrc, title, philanthropist, cityName,fund, id, typeId }) => {
+const ProjectComponent = ({ imgSrc, title, philanthropist, cityName, fund, id, typeId }) => {
   const classes = useStyles();
 
   return (
     <div className={classes.projectItem}>
       <div
         style={{
-            backgroundColor:'#f6f6f6',
-            display:'flex',
-            justifyContent:'center',
-            alignItems:'center'
+          backgroundColor: "#f6f6f6",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
-        <img 
-        src={imgSrc} 
-        alt="projectPic"  
-        style={{
+        <img
+          src={imgSrc}
+          alt="projectPic"
+          style={{
             height: 260,
             maxHeight: "60%",
             minHeight: "60%",
             maxWidth: "100%",
-        }}
+          }}
         />
       </div>
       <div className="description">
@@ -168,20 +202,18 @@ const ProjectComponent = ({ imgSrc, title, philanthropist, cityName,fund, id, ty
 
         <Typography className="text">{/* {description} */}</Typography>
 
-        <div className="text" >{cityName}</div>
-      
+        <div className="text">{cityName}</div>
+
         <div className="text">
           <span>بودجه : </span>
           {ToFarsiNumber(NumberCreator(fund))}
           <span> تومان</span>
         </div>
 
-        <div style={{display:'flex' , alignItems:'center' , justifyContent:'flex-end'}} className="text">
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end" }} className="text">
           {`${philanthropist.firstName} ${philanthropist.lastName ? philanthropist.lastName : ""}`}
-          <PersonIcon style={{color:'#000'}}  fontSize='small' />
-          
+          <PersonIcon style={{ color: "#000" }} fontSize="small" />
         </div>
-        
       </div>
     </div>
   );
@@ -189,11 +221,22 @@ const ProjectComponent = ({ imgSrc, title, philanthropist, cityName,fund, id, ty
 
 export default function AllProjects() {
   const classes = useStyles();
-
+  const [currentTypId, setCurrentTypeId] = useState(0);
   const [data, setData] = useState();
   useEffect(() => {
-    fetch(base + "/Tehran/ProjectGroup").then((response) => response.json().then((response) => setData(response)));
-  }, []);
+    fetch(base + "/Tehran/ProjectGroup").then((response) => response.json().then((response) => {
+      if(!currentTypId) setData(response.projects)
+      else {
+        setData(
+          response.projects.filter((item)=>{
+            return item.typeId === currentTypId
+          })
+        )
+
+      }
+
+    }));
+  }, [currentTypId]);
 
   const theme = createTheme({
     direction: "rtl",
@@ -205,8 +248,8 @@ export default function AllProjects() {
         <div style={{ marginTop: "90px" }}>
           <Grid className={classes.content} container justifyContent="space-between">
             <Grid item container xs={12} lg={7}>
-              {data?.projects.map((item) => (
-                <Grid xs={12} item>
+              {data.map((item) => (
+                <Grid key={item.id} xs={12} item>
                   <ProjectComponent
                     imgSrc={`http://charity.mykanoon.ir/File/Get/${item.imageIds[0]}`}
                     title={item.title}
@@ -215,6 +258,7 @@ export default function AllProjects() {
                     typeId={item.typeId}
                     fund={item.fund}
                     cityName={item.cityName}
+                    
                   />
                   {/* <div className={classes.project}>
                                 <img src={`http://charity.mykanoon.ir/File/Get/${item.imageIds[0]}`} alt="projectPic" className={classes.projectPic}/>
@@ -241,11 +285,11 @@ export default function AllProjects() {
             </Grid>
 
             <Hidden mdDown>
-              <Grid lg={4} item>
+              <Grid lg={4} item container direction="column">
                 <div
                   style={{
                     padding: "30px",
-                    backgroundColor: "#eee6ff",
+                    backgroundColor: "#f6f6f6",
                     display: "flex",
                     flexDirection: "column",
                     width: "100%",
@@ -296,6 +340,31 @@ export default function AllProjects() {
                       جست و جو
                     </Button>
                   </div>
+                </div>
+
+                <div className={classes.category}>
+                  <Typography className="title">دسته بندی پروژه ها</Typography>
+                  <div className="divider"></div>
+
+                  <Typography className="item" onClick={() => setCurrentTypeId(4)}>
+                    درحال ساخت
+                  </Typography>
+                  <div className="divider"></div>
+
+                  <Typography className="item" onClick={() => setCurrentTypeId(3)}>
+                    تمام شده
+                  </Typography>
+                  <div className="divider"></div>
+
+                  <Typography className="item" onClick={() => setCurrentTypeId(1)}>
+                    نیمه تمام
+                  </Typography>
+                  <div className="divider"></div>
+
+                  <Typography className="item" onClick={() => setCurrentTypeId(2)}>
+                    بازسازی
+                  </Typography>
+                  <div className="divider"></div>
                 </div>
               </Grid>
             </Hidden>
