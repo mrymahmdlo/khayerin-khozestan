@@ -50,9 +50,31 @@
     border-radius: 0;
     font-size: 0.9rem;
     position: relative;
+    overflow: hidden;
+    z-index: 1;
     letter-spacing: 0.5px;
     cursor: pointer;
     border: none;
 }
+.btn1::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 101%;
+    height: 101%;
+    z-index: 1;
+    color: #fff;
+    background-color: #24ac75;
+    transition: transform 0.5s ease;
+    transform-origin: 0 0;
+    transition-timing-function: cubic-bezier(.5,1.6,.4,.7);
+    transform: scaleX(0);
+}
+.btn1:hover::before {
+    transform: scaleX(101%);
+}
+
+
 
 

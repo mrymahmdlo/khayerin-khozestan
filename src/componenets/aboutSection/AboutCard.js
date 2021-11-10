@@ -3,13 +3,15 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Grid, Typography } from "@material-ui/core";
 import Tree from "../../assets/images/tree.png";
 import { Hidden } from "@material-ui/core";
-import { mergeClasses } from "@material-ui/styles";
 
 const useStyles = makeStyles(() => ({
   root: {
     margin: "170px auto",
     backgroundColor: "#fff",
-    textAlign: 'right'
+    textAlign: 'right',
+    "@media (max-width: 800px)": {
+      margin: "50px auto"
+    }
   },
   title: {
     textAlign: "right",

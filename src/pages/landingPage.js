@@ -1,15 +1,13 @@
 import {React, useState, useEffect }from 'react';
-import PhiloCarousel from '../componenets/philoSection/PhiloCarousel';
 import ProjectCarousel from '../componenets/projectSection/ProjectCarousel';
-import News from '../componenets/postSection/Posts';
 import ProjectsChart from '../componenets/projectSection/ProjectsChart';
 import PostCarousel from '../componenets/postSection/PostCarousel';
 import AboutCard from '../componenets/aboutSection/AboutCard';
 import TwoPosts from '../componenets/postSection/PostsTwo';
 import ApCarousel from '../componenets/aboutSection/ApCarousel';
 import { CircularProgress } from '@material-ui/core';
-import Additional from '../componenets/StaticSection/Static'
-import AllProjects from '../componenets/projectSection/allProjects_f';
+import Additional from '../componenets/StaticSection/Static';
+import HelpNav from '../componenets/common-components/HelpNav';
 import { GetData } from "../services/APIengine";
 
 export default function LandingPage() {
@@ -32,13 +30,12 @@ export default function LandingPage() {
               <div>
                 <PostCarousel newsData={data.postSection.posts} />
                 <AboutCard />
+                <HelpNav />
                 <ProjectsChart projectsData={data.projectSection} />
                 <ProjectCarousel projectsData={data.projectSection[0]} />
                 <Additional staticData={data2} />
                 <ApCarousel />
                 <TwoPosts postsData={data.postSection.posts} />
-                {/* <PhiloCarousel philosData={data.philanthropistSection} />
-                <AllProjects projectsData={data.projectSection} /> */}
             </div>
             ) : (
               <CircularProgress />

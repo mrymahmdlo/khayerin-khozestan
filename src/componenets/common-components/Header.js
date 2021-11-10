@@ -187,7 +187,7 @@ export default function Header() {
         <div className="header">
           <div className="content">
               <button className="btn1">
-                <b>حمایت از موسسه</b>
+                <span>حمایت از موسسه</span>
               </button>
             <Link to={`/News`} className={`link ${classes.Button}`}>
               <Button

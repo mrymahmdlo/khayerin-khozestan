@@ -8,7 +8,7 @@ export default function Pagination({itemsPerPage, allItems, paginate, currentPag
 
     let className;
     function activePage(item, currentPage) {
-        window.scrollTo(0,0)
+        // window.scrollTo(0,0)
         if(item===currentPage)
             className='active';
         else

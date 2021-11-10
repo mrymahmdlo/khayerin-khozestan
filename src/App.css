@@ -50,3 +50,15 @@ a {
     font-size: 1.5rem !important;
   }
 }
+.arrow {
+  background-color: #20C679;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  position: fixed;
+  bottom: 30px;
+  cursor: pointer;
+  right: 50px ;
+  z-index: 100;
+  box-shadow: 0 0 10px 3px rgb(108 98 98 / 20%);
+}

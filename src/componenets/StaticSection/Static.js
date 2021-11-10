@@ -2,7 +2,7 @@ import React from 'react';
 import { Typography } from '@material-ui/core';
 import { Grid } from "@material-ui/core";
 import './Static.css';
-
+import CountUp from 'react-countup';
 
 export default function Additional({staticData}) {
     return(
@@ -18,7 +18,7 @@ export default function Additional({staticData}) {
             <Grid item xs={12} sm={4} className='additional__item'>
                 <div className='back'>
                     <Typography className='additionl__number' variant="body1" component="p">
-                        {staticData.projectCount} 
+                        <CountUp end={staticData.projectCount} duration={5} redraw={true} /> 
                     </Typography>
                     <Typography variant="body1" color="textPrimary" component="p" gutterBottom>
                          پروژه ها
@@ -28,7 +28,7 @@ export default function Additional({staticData}) {
             <Grid item xs={12} sm={4} className='additional__item'>
                 <div className='back'>
                     <Typography className='additionl__number' variant="body1" component="p">
-                        {staticData.philanthropistCount} 
+                        <CountUp end= {staticData.philanthropistCount} duration={5} redraw={true} /> 
                     </Typography> 
                     <Typography variant="body1" component="p" gutterBottom>
                         خیرین
