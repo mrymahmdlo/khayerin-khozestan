@@ -38,7 +38,8 @@ const useStyles = makeStyles({
       transition: "opacity 0.5s",
     },
     list: {
-      width: 200,
+      width: '100%',
+      padding: '0 1em'
     },
     list__item: {
       textAlign: "right",
