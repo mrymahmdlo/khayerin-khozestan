@@ -73,7 +73,7 @@ export default function ProjectCarousel ({projectsData}) {
                             alt={item.title}
                             src={"http://charity.mykanoon.ir/File/Get/" + item.imageIds[0]}
                             />
-                            <Link to={`/completed/${item.id}`} style={{ width: "100%" }}>
+                            <Link to={`/Completed/${item.id}`} style={{ width: "100%" }}>
                             <Typography component="h5" variant="h5" className={classes.caption} >{item.title}</Typography>
                             </Link>    
                             </>

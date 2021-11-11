@@ -372,38 +372,42 @@ export default function AllProjects() {
                   <Typography className="title">دسته بندی پروژه ها</Typography>
                   <div className="divider"></div>
 
-                  <Typography
-                    className="item"
-                    onClick={() => setCurrentTypeId(4)}
-                  >
-                    درحال ساخت
-                  </Typography>
+                  <Link to='/Projects/half-built' className="item">
+                    <Typography
+                        onClick={() => setCurrentTypeId(1)}
+                    >
+                      پروژه های نیمه تمام
+                    </Typography>
+                  </Link>
+                  <div className="divider"></div>
+                  <Link to='/Projects/overhauled' className="item">
+                    <Typography
+                        onClick={() => setCurrentTypeId(2)}
+                    >
+                      پروژه های بازسازی تخریبی
+                    </Typography>
+                  </Link>
                   <div className="divider"></div>
 
-                  <Typography
-                    className="item"
-                    onClick={() => setCurrentTypeId(3)}
-                  >
-                    تمام شده
-                  </Typography>
-                  <div className="divider"></div>
+                  <Link to='/Projects/completed' className="item">
+                    <Typography
+                        onClick={() => setCurrentTypeId(3)}
+                    >
+                      پروژه های ساخته شده
+                    </Typography>
+                  </Link>
 
-                  <Typography
-                    className="item"
-                    onClick={() => setCurrentTypeId(1)}
-                  >
-                    نیمه تمام
-                  </Typography>
                   <div className="divider"></div>
+                  <Link to='/Projects/under-construction' className="item">
+                    <Typography
+                        onClick={() => setCurrentTypeId(4)}
+                    >
+                      پروژه های در حال انجام
+                    </Typography>
+                  </Link>
 
-                  <Typography
-                    className="item"
-                    onClick={() => setCurrentTypeId(2)}
-                  >
-                    بازسازی
-                  </Typography>
-                  <div className="divider"></div>
                 </div>
+                <div style={{marginBottom: '2em'}}></div>
               </Grid>
             </Hidden>
           </Grid>
