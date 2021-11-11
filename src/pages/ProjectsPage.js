@@ -247,7 +247,7 @@ export default function AllProjects() {
       {data ? (
         <div style={{ marginTop: "90px" }}>
           <Grid className={classes.content} container justifyContent="space-between">
-            <Grid item container xs={12} lg={7}>
+            <Grid item container xs={12} md={7}>
               {data.map((item) => (
                 <Grid key={item.id} xs={12} item>
                   <ProjectComponent
@@ -285,7 +285,7 @@ export default function AllProjects() {
             </Grid>
 
             <Hidden mdDown>
-              <Grid lg={4} item container direction="column">
+              <Grid md={4} item container direction="column">
                 <div
                   style={{
                     padding: "30px",

@@ -154,59 +154,10 @@ export default function NewsPage() {
         <div>
           {/* {news ? <News newsData={news.postSection.posts} /> : null} */}
           {data ? (
-            <Grid container justifyContent="space-between" className={classes.root} >
-              {currentItems.map((item) => (
-                <Grid item xs={12} lg={7}   className={classes.item}>
-
-                  <NewsComponent 
-                  imgSrc={
-                    "http://charity.mykanoon.ir/File/Get/" +
-                          item.imageIds[0]
-                  }
-                  title={item.title}
-                  description={'text'}
-                  id={item.id}
-                  key={item.id}
-                  />
-                  {/* <div className={classes.post}>
-                    <Link to={`/News/${item.id}`}>
-                      <img
-                        src={
-                          "http://charity.mykanoon.ir/File/Get/" +
-                          item.imageIds[0]
-                        }
-                        className={classes.image}
-                      ></img>
-                      <div
-                        className="content__item"
-                        style={{
-                          margin: "auto 5px",
-                          color: "#fff",
-                          height: 65,
-                        }}
-                      >
-                        {item.title}
-                      </div>
-                      <Button
-                        variant="contained"
-                        style={{
-                          width: "100%",
-                          marginTop: 9,
-                          borderRadius: 0,
-                          background: "#1b5263",
-                          color: "#fff",
-                          padding: 10,
-                        }}
-                        className={classes.button}
-                      >
-                        اطلاعات بیشتر
-                      </Button>
-                    </Link>
-                  </div> */}
-                </Grid>
-              ))}
+            <Grid container justifyContent="space-between" direction="row-reverse" className={classes.root} >
+              
+              <Grid md={4} item container direction="column">
               <Hidden mdDown>
-              <Grid lg={4} item container direction="column">
                 <div
                   style={{
                     padding: "30px",
@@ -262,8 +213,60 @@ export default function NewsPage() {
                     </Button>
                   </div>
                 </div>
+                </Hidden>
                 </Grid>
-            </Hidden>
+                <Grid item xs={12} md={7}   className={classes.item}>
+              {currentItems.map((item) => (
+                <Grid>
+
+                  <NewsComponent 
+                  imgSrc={
+                    "http://charity.mykanoon.ir/File/Get/" +
+                          item.imageIds[0]
+                  }
+                  title={item.title}
+                  description={'text'}
+                  id={item.id}
+                  key={item.id}
+                  />
+                  {/* <div className={classes.post}>
+                    <Link to={`/News/${item.id}`}>
+                      <img
+                        src={
+                          "http://charity.mykanoon.ir/File/Get/" +
+                          item.imageIds[0]
+                        }
+                        className={classes.image}
+                      ></img>
+                      <div
+                        className="content__item"
+                        style={{
+                          margin: "auto 5px",
+                          color: "#fff",
+                          height: 65,
+                        }}
+                      >
+                        {item.title}
+                      </div>
+                      <Button
+                        variant="contained"
+                        style={{
+                          width: "100%",
+                          marginTop: 9,
+                          borderRadius: 0,
+                          background: "#1b5263",
+                          color: "#fff",
+                          padding: 10,
+                        }}
+                        className={classes.button}
+                      >
+                        اطلاعات بیشتر
+                      </Button>
+                    </Link>
+                  </div> */}
+                </Grid>
+              ))}
+              </Grid>
             </Grid>
           ) : null}
          
