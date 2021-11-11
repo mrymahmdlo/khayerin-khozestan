@@ -39,7 +39,7 @@ const useStyles = makeStyles({
     },
     list: {
       width: '100%',
-      padding: '0 1em'
+      padding: '0 1em',
     },
     list__item: {
       textAlign: "right",
@@ -87,7 +87,7 @@ export default function AppBarMenu(){
               </ListItem>
             </div>
             <Link
-                to={`/Projects`}
+                to={`/Projects/half-built`}
                 className="link"
                 style={{ width: "100%",paddingRight: "1em" }}
             >
@@ -96,7 +96,7 @@ export default function AppBarMenu(){
               </ListItem>
             </Link>
             <Link
-                to={`/Projects`}
+                to={`/Projects/overhauled`}
                 className="link"
                 style={{ width: "100%",paddingRight: "1em" }}
             >
@@ -105,7 +105,7 @@ export default function AppBarMenu(){
               </ListItem>
             </Link>
             <Link
-                to={`/Projects`}
+                to={`/Projects/completed`}
                 className="link"
                 style={{ width: "100%",paddingRight: "1em" }}
             >
@@ -114,7 +114,7 @@ export default function AppBarMenu(){
               </ListItem>
             </Link>
             <Link
-                to={`/Projects`}
+                to={`/Projects/under-construction`}
                 className="link"
                 style={{ width: "100%",paddingRight: "1em" }}
             >

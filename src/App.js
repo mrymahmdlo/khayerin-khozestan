@@ -58,7 +58,7 @@ function App() {
           </div>
           <Switch>
             <Route path="/Philanthropists" exact component={AllPhilos} />
-            <Route path="/Projects" exact component={AllProjects} />
+            <Route path="/Projects/:status" exact component={AllProjects} />
             <Route path="/News/:id" component={EachNews} />
             <Route path="/News" exact component={NewsPage} />
             <Route path="/Philanthropists/:id" component={PhiloDetails} />

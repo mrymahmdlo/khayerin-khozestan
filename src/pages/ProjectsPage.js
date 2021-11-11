@@ -21,11 +21,14 @@ import rtl from "jss-rtl";
 import ToFarsiNumber from "../componenets/common-components/Converter";
 import NumberCreator from "../componenets/common-components/NumberCreator";
 import PersonIcon from "@material-ui/icons/Person";
+import {useParams} from 'react-router';
+import Hero2 from "../assets/images/hero2.png";
 
 const base = "http://charity.mykanoon.ir/api";
 
 const useStyles = makeStyles(() => ({
   content: {
+    marginTop: '-2em',
     padding: "0px 40px",
     "@media (max-width: 800px)": {
       padding: "2em 0em 5em",
@@ -138,6 +141,19 @@ const useStyles = makeStyles(() => ({
       },
     },
   },
+  header: {
+    backgroundImage: `url(${Hero2})`,
+    height: 250,
+  },
+  headertext: {
+    color: '#072366',
+    fontWeight: "bold",
+    wordSpacing: "-1.2px",
+    paddingBlock: "80px !important",
+    "@media (max-width: 600px)": {
+      fontSize: "2em !important",
+    },
+  },
 }));
 
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
@@ -242,13 +258,25 @@ export default function AllProjects() {
     direction: "rtl",
   });
 
+  const {status}=useParams();
+  let temp=data;
+  let type;
+  status==='half-built' ? type=1 :
+      (status==='overhauled' ? type=2 :
+          (status==='under-construction' ? type=3 :
+              type=4));
+  temp=temp?.filter(item=>item?.typeId===type)
+
   return (
     <>
+      <Grid className={classes.header} xs={12}>
+        <Typography className={classes.headertext} variant="h3" component="h3">پروژه های ساخت مدرسه</Typography>
+      </Grid>
       {data ? (
         <div style={{ marginTop: "90px" }}>
           <Grid className={classes.content} container justifyContent="space-between">
             <Grid item container xs={12} md={7}>
-              {data.map((item) => (
+              {temp?.map((item) => (
                 <Grid key={item.id} xs={12} item>
                   <ProjectComponent
                     imgSrc={`http://charity.mykanoon.ir/File/Get/${item.imageIds[0]}`}
@@ -258,7 +286,7 @@ export default function AllProjects() {
                     typeId={item.typeId}
                     fund={item.fund}
                     cityName={item.cityName}
-                    
+
                   />
                 </Grid>
               ))}

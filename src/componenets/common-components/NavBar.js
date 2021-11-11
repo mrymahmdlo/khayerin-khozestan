@@ -135,6 +135,7 @@ export default function NavBar(){
               anchorEl={anchorEl1}
               open={Boolean(anchorEl1)}
               onClose={handleClose1}
+              style={{direction: 'rtl'}}
             >
               <StyledMenuItem>
                 <Link to="/About">
@@ -171,30 +172,38 @@ export default function NavBar(){
               open={Boolean(anchorEl)}
               onClose={handleClose}
             >
-              <StyledMenuItem>
-                <ListItemText
-                  primary="پروژه های نیمه تمام"
-                  style={{ textAlign: "right", color: "#fff" }}
-                />
-              </StyledMenuItem>
-              <StyledMenuItem>
-                <ListItemText
-                  primary="پروژه های بازسازی تخریبی"
-                  style={{ textAlign: "right", color: "#fff" }}
-                />
-              </StyledMenuItem>
-              <StyledMenuItem>
-                <ListItemText
-                  primary="پروژه های ساخته شده"
-                  style={{ textAlign: "right", color: "#fff" }}
-                />
-              </StyledMenuItem>
-              <StyledMenuItem>
-                <ListItemText
-                  primary="پروژه های درحال انجام"
-                  style={{ textAlign: "right", color: "#fff" }}
-                />
-              </StyledMenuItem>
+              <Link to='/Projects/half-built'>
+                <StyledMenuItem>
+                  <ListItemText
+                      primary="پروژه های نیمه تمام"
+                      style={{ textAlign: "right", color: "#fff" }}
+                  />
+                </StyledMenuItem>
+              </Link>
+              <Link to='/Projects/overhauled'>
+                <StyledMenuItem>
+                  <ListItemText
+                      primary="پروژه های بازسازی تخریبی"
+                      style={{ textAlign: "right", color: "#fff" }}
+                  />
+                </StyledMenuItem>
+              </Link>
+              <Link to='/Projects/completed'>
+                <StyledMenuItem>
+                  <ListItemText
+                      primary="پروژه های ساخته شده"
+                      style={{ textAlign: "right", color: "#fff" }}
+                  />
+                </StyledMenuItem>
+              </Link>
+              <Link to='/Projects/under-construction'>
+                <StyledMenuItem>
+                  <ListItemText
+                      primary="پروژه های درحال انجام"
+                      style={{ textAlign: "right", color: "#fff" }}
+                  />
+                </StyledMenuItem>
+              </Link>
             </StyledMenu>
             <Link to={`/`} className={`link ${classes.Button}`}>
               <Button
