@@ -189,12 +189,12 @@ const ProjectComponent = ({ imgSrc, title, philanthropist, cityName, fund, id, t
         <Link
           to={
             typeId === 1
-              ? `/half-built/${id}`
+              ? `/HalfBuilt/${id}`
               : typeId === 2
-              ? `/overhauled/${id}`
+              ? `/Overhauled/${id}`
               : typeId === 3
-              ? `/completed/${id}`
-              : `/under-construction/${id}`
+              ? `/Completed/${id}`
+              : `/UnderConstruction/${id}`
           }
         >
           <Typography className="title">{title}</Typography>
@@ -260,26 +260,6 @@ export default function AllProjects() {
                     cityName={item.cityName}
                     
                   />
-                  {/* <div className={classes.project}>
-                                <img src={`http://charity.mykanoon.ir/File/Get/${item.imageIds[0]}`} alt="projectPic" className={classes.projectPic}/>
-                                <div className={classes.info}>
-                                    <h3 className={classes.title}>{item.title}</h3>
-                                    <div>اهدا شده توسط : {`${item.philanthropist.firstName} ${item.philanthropist.lastName ? item.philanthropist.lastName : ''}`}</div>
-                                    <div><span>بودجه : </span>{ToFarsiNumber(NumberCreator(item.fund))}<span> تومان</span></div>
-                                    <div>{item.cityName}</div>
-                                </div>
-                                <div style={{padding: '0 !important'}}>
-                                    <Link
-                                        to={item.typeId===1 ? `/half-built/${item.id}` :
-                                            (item.typeId===2 ? `/overhauled/${item.id}` :
-                                                (item.typeId===3 ? `/completed/${item.id}` :
-                                                    `/under-construction/${item.id}`))}>
-                                        <Button variant='contained' className={classes.button}>
-                                            اطلاعات بیشتر
-                                        </Button>
-                                    </Link>
-                                </div>
-                            </div> */}
                 </Grid>
               ))}
             </Grid>

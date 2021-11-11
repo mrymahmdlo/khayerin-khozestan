@@ -153,7 +153,7 @@ export default function NavBar(){
                 </Link>
               </StyledMenuItem>
             </StyledMenu>
-            <Link to={`/Projects`} className={`link ${classes.Button}`}>
+            <div className={`link ${classes.Button}`}>
               <Button
                 style={{ padding: "0 2vw" }}
                 className={classes.buttonOnHover}
@@ -164,7 +164,7 @@ export default function NavBar(){
                 <div className={classes.button__overlay} />
                 پروژه ها
               </Button>
-            </Link>
+            </div>
             <StyledMenu
               id="customized-menu"
               anchorEl={anchorEl}

@@ -224,42 +224,6 @@ export default function NewsPage() {
                   id={item.id}
                   key={item.id}
                   />
-                  {/* <div className={classes.post}>
-                    <Link to={`/News/${item.id}`}>
-                      <img
-                        src={
-                          "http://charity.mykanoon.ir/File/Get/" +
-                          item.imageIds[0]
-                        }
-                        className={classes.image}
-                        alt="post image"
-                      />
-                      <div
-                        className="content__item"
-                        style={{
-                          margin: "auto 5px",
-                          color: "#fff",
-                          height: 65,
-                        }}
-                      >
-                        {item.title}
-                      </div>
-                      <Button
-                        variant="contained"
-                        style={{
-                          width: "100%",
-                          marginTop: 9,
-                          borderRadius: 0,
-                          background: "#1b5263",
-                          color: "#fff",
-                          padding: 10,
-                        }}
-                        className={classes.button}
-                      >
-                        اطلاعات بیشتر
-                      </Button>
-                    </Link>
-                  </div> */}
                 </Grid>
               ))}
               </Grid>
