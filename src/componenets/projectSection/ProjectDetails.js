@@ -9,8 +9,6 @@ import Button from "@material-ui/core/Button";
 import "./ProjectDetails.css";
 import { GetData } from "../../services/APIengine";
 
-const base = "http://charity.mykanoon.ir/api";
-
 const useStyles = makeStyles(() => ({
   content: {
     margin: "1em auto 0",
@@ -26,10 +24,9 @@ const useStyles = makeStyles(() => ({
     padding: "1em",
   },
   images: {
-    minWidth: "30%",
-    minHeight: "30%",
-    maxWidth: "80%",
+    width: "auto",
     maxHeight: "80%",
+    height: "100%",
     borderRadius: "6px",
   },
 }));
@@ -70,6 +67,11 @@ const ProjectDetails = () => {
                   src={`http://charity.mykanoon.ir/File/Get/${data?.project?.philanthropist?.imageId}`}
                   alt="PhiloPic"
                   className="Philo-pic"
+                  style={{
+                    maxHeight: "90px",
+                    width: "auto",
+                    height: "100%",
+                  }}
                 />
               </div>
               <h2 className="Philo-name">
@@ -100,9 +102,6 @@ const ProjectDetails = () => {
           </div>
         </div>
       </div>
-
-      {/* <progress value="3333" max="10000"> 33% </progress>
-            <h5 style={{margin: '0em auto'}}> میزان پیشرفت پروژه </h5> */}
 
       <div className={classes.imagesBox}>
         <h2 style={{ margin: "0em auto" }}>عکس های پروژه</h2>

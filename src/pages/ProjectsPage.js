@@ -99,7 +99,6 @@ const useStyles = makeStyles(() => ({
       },
       "& .text": {
         fontSize: "14px",
-        // margin: "10px 0px",
         color: "#999",
       },
     },
@@ -161,7 +160,15 @@ const StyledInput = withStyles((theme) =>
   })
 )(InputBase);
 
-const ProjectComponent = ({ imgSrc, title, philanthropist, cityName, fund, id, typeId }) => {
+const ProjectComponent = ({
+  imgSrc,
+  title,
+  philanthropist,
+  cityName,
+  fund,
+  id,
+  typeId,
+}) => {
   const classes = useStyles();
 
   return (
@@ -210,8 +217,17 @@ const ProjectComponent = ({ imgSrc, title, philanthropist, cityName, fund, id, t
           <span> تومان</span>
         </div>
 
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end" }} className="text">
-          {`${philanthropist.firstName} ${philanthropist.lastName ? philanthropist.lastName : ""}`}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "flex-end",
+          }}
+          className="text"
+        >
+          {`${philanthropist.firstName} ${
+            philanthropist.lastName ? philanthropist.lastName : ""
+          }`}
           <PersonIcon style={{ color: "#000" }} fontSize="small" />
         </div>
       </div>
@@ -224,18 +240,18 @@ export default function AllProjects() {
   const [currentTypId, setCurrentTypeId] = useState(0);
   const [data, setData] = useState();
   useEffect(() => {
-    fetch(base + "/Tehran/ProjectGroup").then((response) => response.json().then((response) => {
-      if(!currentTypId) setData(response.projects)
-      else {
-        setData(
-          response.projects.filter((item)=>{
-            return item.typeId === currentTypId
-          })
-        )
-
-      }
-
-    }));
+    fetch(base + "/Tehran/ProjectGroup").then((response) =>
+      response.json().then((response) => {
+        if (!currentTypId) setData(response.projects);
+        else {
+          setData(
+            response.projects.filter((item) => {
+              return item.typeId === currentTypId;
+            })
+          );
+        }
+      })
+    );
   }, [currentTypId]);
 
   const theme = createTheme({
@@ -246,7 +262,11 @@ export default function AllProjects() {
     <>
       {data ? (
         <div style={{ marginTop: "90px" }}>
-          <Grid className={classes.content} container justifyContent="space-between">
+          <Grid
+            className={classes.content}
+            container
+            justifyContent="space-between"
+          >
             <Grid item container xs={12} md={7}>
               {data.map((item) => (
                 <Grid key={item.id} xs={12} item>
@@ -258,7 +278,6 @@ export default function AllProjects() {
                     typeId={item.typeId}
                     fund={item.fund}
                     cityName={item.cityName}
-                    
                   />
                 </Grid>
               ))}
@@ -326,22 +345,34 @@ export default function AllProjects() {
                   <Typography className="title">دسته بندی پروژه ها</Typography>
                   <div className="divider"></div>
 
-                  <Typography className="item" onClick={() => setCurrentTypeId(4)}>
+                  <Typography
+                    className="item"
+                    onClick={() => setCurrentTypeId(4)}
+                  >
                     درحال ساخت
                   </Typography>
                   <div className="divider"></div>
 
-                  <Typography className="item" onClick={() => setCurrentTypeId(3)}>
+                  <Typography
+                    className="item"
+                    onClick={() => setCurrentTypeId(3)}
+                  >
                     تمام شده
                   </Typography>
                   <div className="divider"></div>
 
-                  <Typography className="item" onClick={() => setCurrentTypeId(1)}>
+                  <Typography
+                    className="item"
+                    onClick={() => setCurrentTypeId(1)}
+                  >
                     نیمه تمام
                   </Typography>
                   <div className="divider"></div>
 
-                  <Typography className="item" onClick={() => setCurrentTypeId(2)}>
+                  <Typography
+                    className="item"
+                    onClick={() => setCurrentTypeId(2)}
+                  >
                     بازسازی
                   </Typography>
                   <div className="divider"></div>
