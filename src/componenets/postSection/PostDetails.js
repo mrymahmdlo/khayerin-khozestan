@@ -36,15 +36,20 @@ const useStyles = makeStyles(() => ({
     color: "#00303F",
     fontWeight: "800",
     fontSize: "2.8em",
-  
+   "&:hover":{
+    color: "#09cc7f !important" ,
+   },
     "@media (max-width: 600px)": {
       fontSize: "1.5em", 
       textAlign: "center",
       color: "#00303F",
       
-  
     },
   },
+
+  
+  
+
   summary: {
     textAlign: "justify",
     direction: "rtl",

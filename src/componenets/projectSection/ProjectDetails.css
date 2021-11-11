@@ -13,6 +13,10 @@
 .Title{
     margin: 0 auto 0.5em;
 }
+.Title:hover{
+
+    color: #09cc7f !important;
+}
 .Philo-pic{
     max-width: 40%;
     display: block;
@@ -44,7 +48,7 @@
     color: #09cc7f !important;
 }
 
-progress {
+/* progress {
     border-radius: 2px; 
     width: 100%;
     height: 10px;
@@ -56,7 +60,7 @@ progress {
   progress::-webkit-progress-value {
     background-color: #09cc7f;
     border-radius: 7px;
-  }
+  } */
 
 @media screen and (max-width: 3000px) and (min-width: 1024px){
     .Details{
