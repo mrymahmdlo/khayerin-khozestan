@@ -3,11 +3,7 @@ import { useParams } from "react-router";
 import { makeStyles } from "@material-ui/core/styles";
 import { GetData } from "../../services/APIengine";
 import { Grid, Typography } from "@material-ui/core";
-import { DateRange } from "@material-ui/icons";
-import { Link } from "react-router-dom";
-import Button from "@material-ui/core/Button";
-import PersonIcon from "@material-ui/icons/Person";
-
+import Searchbar from "../common-components/Searchbar";
 const useStyles = makeStyles(() => ({
   root: {
     height: "auto",
@@ -36,13 +32,17 @@ const useStyles = makeStyles(() => ({
     paddingBottom:'40px'
   },
   title: {
-    borderRight: "5px solid #09cc7f",
-    paddingRight: 10,
-    color: "#09cc7f",
+    textAlign: "center",
+    color: "#00303F",
+    fontWeight: "800",
+    fontSize: "2.8em",
+  
     "@media (max-width: 600px)": {
-      fontSize: "1.4em",
-      borderRight: "3px solid #09cc7f",
-      color: "#09cc7f",
+      fontSize: "1.5em", 
+      textAlign: "center",
+      color: "#00303F",
+      
+  
     },
   },
   summary: {
@@ -88,19 +88,26 @@ const EachNews = () => {
   }, [id]);
 
   return (
-    <Grid sm={9} className={classes.root}>
-      <Grid className={classes.newData}>
-        <Typography  component="h1" variant="" className={classes.title} >
+    <Grid container justifyContent="space-evenly" direction="row-reverse" className={classes.root} >
+        <Grid className={classes.newData}>
+        <Typography   component="h1" variant="" className={classes.title} >
           {data?.post?.title}
         </Typography>
-        <Typography component="h3" variant="" className={classes.summary}>
+        {/* <Typography component="h3" variant="" className={classes.summary}>
           {data?.post?.summary}
-        </Typography>
-        <Typography component="p" variant="" style={{ marginRight: 5, fontSize: 18 }}>
+        </Typography> */}
+        {/* <Typography component="p" variant="" style={{ marginRight: 5, fontSize: 18 }}>
           {data?.post?.createDate}
           <DateRange style={{ marginLeft: 5, verticalAlign: "sub", fontSize: 30 }} />
-        </Typography>
+        </Typography> */}
       </Grid>
+      
+    
+    <Searchbar/>
+       
+    <Grid xs={12} md={7} className={classes.root}>
+      
+    
       <div style={{ backgroundColor: "#fff" }}>
         <Grid>
           <img src={"http://charity.mykanoon.ir/File/Get/" + data?.post?.imageIds} className={classes.image}></img>
@@ -155,6 +162,7 @@ const EachNews = () => {
           </Grid>
         </>
       ) : null} */}
+    </Grid>
     </Grid>
   );
 };

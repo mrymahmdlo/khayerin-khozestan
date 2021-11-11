@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import News from "../componenets/postSection/Posts";
-import Pagination from "../componenets/common-components/Pagination";
 import { Grid } from "@material-ui/core";
 import { CircularProgress,Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
