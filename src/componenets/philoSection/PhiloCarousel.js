@@ -45,7 +45,7 @@ export default function PhiloCarousel(philosData) {
         </div>
         <Carousel responsive={responsive} >
             {philosData.philosData[0].data.map(item => (
-                <PhiloCard key={item.id} id={item.id} philoData={item} />
+                <PhiloCard key={item.id} id={item.id} philoData={item} key={item.id} />
             ))}
         </Carousel>
       </ThemeProvider>

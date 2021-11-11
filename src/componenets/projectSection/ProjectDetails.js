@@ -83,7 +83,9 @@ const ProjectDetails = () => {
             <div className={classes.imagesBox}>
                 <h2 style={{margin: '0em auto'}}>عکس های پروژه</h2>
                 <Grid lg={4} sm={6} xs={12}>{data?.project?.imageIds.map((item)=>
-                    <img src={`http://charity.mykanoon.ir/File/Get/${item}`} alt="projectPics" className={classes.images}/>
+                    <img src={`http://charity.mykanoon.ir/File/Get/${item}`} alt="projectPics" className={classes.images}
+                    key={item.id}
+                    />
                 )}
                 </Grid>
             </div>

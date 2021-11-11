@@ -44,7 +44,7 @@ export default function Posts({newsData}) {
                 >
                     {
                         newsData.slice(1,5).map(item => 
-                            <Grid item className='side-news' xs={12} sm={6}>
+                            <Grid item className='side-news' xs={12} sm={6} key={item.id}>
                                 <Link to={`/News/${item.id}`} className='link'>
                                     <SideNewsCard sideData={item} />
                                 </Link>

@@ -44,7 +44,7 @@ export default function ApCarousel() {
             >
             {
             images.map(item =>
-                <img src={item.src} style={{width: "75%",height: "90%"}} />
+                <img src={item.src} style={{width: "75%",height: "90%"}} alt="appreciations image" key={item.id} />
             )
             }
             </Carousel> 

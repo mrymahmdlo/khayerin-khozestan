@@ -69,6 +69,7 @@ export default function TwoPosts({ postsData }) {
                 postsData[2].imageIds[0]
               }
               className={classes.media}
+              alt="post image"
             />
             <div className={classes.date}>{postsData[2].createDate}</div>
           </div>
@@ -93,6 +94,7 @@ export default function TwoPosts({ postsData }) {
                 postsData[5].imageIds[0]
               }
               className={classes.media}
+              alt="post image"
             />
             <div className={classes.date}>{postsData[1].createDate}</div>
           </div>

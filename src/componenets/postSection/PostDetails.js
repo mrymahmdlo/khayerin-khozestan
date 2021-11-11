@@ -95,7 +95,8 @@ const EachNews = () => {
         <img
           src={"http://charity.mykanoon.ir/File/Get/" + data?.post?.imageIds}
           className={classes.image}
-        ></img>
+          alt="post image"
+        />
       </Grid>
       <Grid className={classes.content}>
         <Typography component="h2" variant='' >شرح خبر</Typography>
@@ -116,7 +117,7 @@ const EachNews = () => {
           </div>
           <Grid container spacing={3} style={{ marginTop: 0 }}>
             {data?.newPosts.slice(0, 3).map((item) => (
-              <Grid item xs={12} md={4} sm={6}>
+              <Grid item xs={12} md={4} sm={6} key={item.id}>
                 <div className={classes.post}>
                   <Link to={`/News/${item.id}`}>
                     <img
@@ -124,7 +125,8 @@ const EachNews = () => {
                         "http://charity.mykanoon.ir/File/Get/" + item.imageIds
                       }
                       className={classes.image2}
-                    ></img>
+                      alt="post image"
+                    />
                     <div
                       className="content__item"
                       style={{ margin: "auto 5px", color: "#fff", height: 65 }}

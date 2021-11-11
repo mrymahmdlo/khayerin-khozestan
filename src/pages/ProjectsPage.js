@@ -78,7 +78,7 @@ export default function AllProjects() {
         { data ?  (
         <Grid className={classes.content} container>
             {data?.projects.map((item)=>(
-                <Grid lg={4} sm={6} xs={12} item>
+                <Grid lg={4} sm={6} xs={12} item key={item.id}>
                     <div className={classes.project}>
                         <img src={`http://charity.mykanoon.ir/File/Get/${item.imageIds[0]}`} alt="projectPic" className={classes.projectPic}/>
                         <div className={classes.info}>

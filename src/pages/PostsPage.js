@@ -69,7 +69,7 @@ export default function NewsPage() {
           {data ? (
             <Grid container className={classes.root} spacing={2}>
               {currentItems.map((item) => (
-                <Grid item xs={12} md={3} sm={6} className={classes.item}>
+                <Grid item xs={12} md={3} sm={6} className={classes.item} key={item.id}>
                   <div className={classes.post}>
                     <Link to={`/News/${item.id}`}>
                       <img
@@ -78,7 +78,8 @@ export default function NewsPage() {
                           item.imageIds[0]
                         }
                         className={classes.image}
-                      ></img>
+                        alt="post image"
+                      />
                       <div
                         className="content__item"
                         style={{

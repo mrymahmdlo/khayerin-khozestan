@@ -51,7 +51,7 @@ export default function AboutCard() {
       </Grid>
       <Grid item md={5}>
         <Hidden mdDown="true" >
-        <img src={Tree} style={{ maxWidth: "100%", height: "auto",width:'100%' }}></img>
+        <img src={Tree} style={{ maxWidth: "100%", height: "auto",width:'100%' }} alt="about us"></img>
         </Hidden>
       </Grid>
     </Grid>

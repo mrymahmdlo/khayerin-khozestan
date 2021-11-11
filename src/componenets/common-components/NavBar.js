@@ -1,24 +1,52 @@
 import { React, useState } from "react";
 import "./header.css";
 import Logo from "../../assets/images/khayerin-logo.png";
-import { Divider } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Drawer from "@material-ui/core/Drawer";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 
+const useStyles = makeStyles({
+    Button: {
+      display: "flex",
+      position: "relative",
+      height: "100%",
+      width: "auto",
+      "& > *": {
+        color: "#072366",
+        fontSize: "1.1rem",
+      },
+    },
+    buttonOnHover: {
+      "&:hover": {
+        color: "#20C679 !important",
+      },
+    },
+    button__overlay: {
+      position: "absolute",
+      backgroundColor: "#000",
+      opacity: 0,
+      height: "100%",
+      width: "100%",
+      transition: "opacity 0.5s",
+    },
+    list: {
+      width: 200,
+    },
+    list__item: {
+      textAlign: "right",
+      color: "#000 !important",
+      "&>span": {
+        fontSize: "1.2rem !important",
+      },
+    },
+  });
+
 export default function NavBar(){
+    const classes = useStyles();
 
     const StyledMenu = withStyles({
         paper: {
@@ -61,6 +89,7 @@ export default function NavBar(){
       const handleClose1 = () => {
         setAnchorEl1(null);
       };
+      const StyledMenuItem = withStyles(() => ({}))(MenuItem);
 
     return(
         <>

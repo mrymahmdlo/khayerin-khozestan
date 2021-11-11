@@ -68,10 +68,11 @@ export default function ProjectCarousel ({projectsData}) {
                         projectsData.data.slice(0,5).map( item =>
                             <>
                             <img
+                            key={item.id}
                             className={classes.media}
                             alt={item.title}
                             src={"http://charity.mykanoon.ir/File/Get/" + item.imageIds[0]}
-                            ></img>
+                            />
                             <Link to={`/completed/${item.id}`} style={{ width: "100%" }}>
                             <Typography component="h5" variant="h5" className={classes.caption} >{item.title}</Typography>
                             </Link>    

@@ -55,7 +55,7 @@ export default function Project({ id, path, theme, project }) {
             className={classes.media}
             alt={project.title}
             src={"http://charity.mykanoon.ir/File/Get/" + project.imageIds[0]}
-          ></img>
+          />
           <Typography component="h6" variant="h6">{project.title}</Typography>
         </Link>
       </Card>

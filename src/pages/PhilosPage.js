@@ -89,7 +89,7 @@ export default function AllPhilos() {
         { data ?  (
         <Grid className={classes.content} container>
             {data?.philanthropists.map((item)=>(
-                <Grid lg={4} sm={6} xs={12} item className={classes.grid}>
+                <Grid lg={4} sm={6} xs={12} item className={classes.grid} key={item.id}>
                     <div className={classes.philo}>
                         <img src={`http://charity.mykanoon.ir/File/Get/${item.imageId}`} alt="philoPic" className={classes.philoPic}/>
                         <h3 className={classes.name}>{`${item.firstName} ${item.lastName ? item.lastName : ''}`}</h3>

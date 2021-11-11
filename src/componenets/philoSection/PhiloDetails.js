@@ -107,7 +107,7 @@ const PhiloDetails = () => {
                 <div className='projects'>
                     <h2>پروژه های خیر</h2>
                     {data?.projects.slice(0,data?.projects.length).map((item)=>(
-                        <div>
+                        <div key={item.id}>
                             <Link
                                 to={item.typeId===1 ? `/half-built/${item.id}` :
                                     (item.typeId===2 ? `/overhauled/${item.id}` :

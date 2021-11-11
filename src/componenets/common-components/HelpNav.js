@@ -41,6 +41,7 @@ export default function HelpNav() {
             padding: "20px 50px",
             fontSize: "15px",
             borderRadius: 0,
+            color : "#072366",
             margin: "40px 50px"
           }}
         >
