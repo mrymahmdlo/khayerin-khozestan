@@ -3,6 +3,7 @@ import { Typography } from '@material-ui/core';
 import { Grid } from "@material-ui/core";
 import './Static.css';
 import CountUp from 'react-countup';
+import NumberCreator from "../common-components/NumberCreator";
 
 export default function Additional({staticData}) {
     return(
@@ -28,7 +29,7 @@ export default function Additional({staticData}) {
             <Grid item xs={12} sm={4} className='additional__item'>
                 <div className='back'>
                     <Typography className='additionl__number' variant="body1" component="p">
-                        <CountUp end= {staticData?.philanthropistCount} duration={5} redraw={true} />
+                        <CountUp end= {staticData?.philanthropistCount} duration={2} redraw={true} />
                     </Typography> 
                     <Typography variant="body1" component="p" gutterBottom>
                         خیرین
@@ -38,7 +39,7 @@ export default function Additional({staticData}) {
             <Grid item xs={12} sm={4} className='additional__item'>
                 <div className='back'>
                     <Typography className='additionl__number' variant="body1" component="p">
-                        {staticData?.budget}
+                        {NumberCreator(staticData?.budget)}
                     </Typography>
                     <Typography variant="body1" component="p">
                         سرمایه وقف شده

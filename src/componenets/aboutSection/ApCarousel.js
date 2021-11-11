@@ -1,5 +1,6 @@
 import { Grid, Typography } from '@material-ui/core';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Carousel from 'react-multi-carousel';
 import '../common-components/carouselStyle.css';
 import ImageObj from '../../assets/images/letter of appreciations/ImageObj';
@@ -29,7 +30,9 @@ export default function ApCarousel() {
                 موسسه خیرین مدرسه ساز خوزستان
             </Typography>
             <Typography component="p" className="blueText">
+              <Link to="/Appreciations">
                 افتخارات و تقدیرنامه ها
+              </Link>
             </Typography>
             <Carousel
                 responsive={responsive}
@@ -44,7 +47,9 @@ export default function ApCarousel() {
             >
             {
             images.map(item =>
+              <Link  to="/Appreciations">
                 <img src={item.src} style={{width: "75%",height: "90%"}} alt="appreciations image" key={item.id} />
+              </Link>
             )
             }
             </Carousel> 
