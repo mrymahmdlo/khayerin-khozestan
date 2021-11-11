@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { GetData } from "../../services/APIengine";
 import { Grid, Typography } from "@material-ui/core";
 import Searchbar from "../common-components/Searchbar";
-import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
+import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 const useStyles = makeStyles(() => ({
   root: {
     height: "auto",
@@ -29,27 +29,23 @@ const useStyles = makeStyles(() => ({
     boxShadow: "0 10px 20px 0 rgb(221 221 221 / 30%)",
     padding: "0px 30px",
     direction: "rtl",
-    paddingTop:'15px',
-    paddingBottom:'40px'
+    paddingTop: "15px",
+    paddingBottom: "40px",
   },
   title: {
     textAlign: "center",
     color: "#00303F",
     fontWeight: "800",
     fontSize: "2.8em",
-   "&:hover":{
-    color: "#09cc7f !important" ,
-   },
+    "&:hover": {
+      color: "#09cc7f !important",
+    },
     "@media (max-width: 600px)": {
-      fontSize: "1.5em", 
+      fontSize: "1.5em",
       textAlign: "center",
       color: "#00303F",
-      
     },
   },
-
-  
-  
 
   summary: {
     textAlign: "justify",
@@ -94,48 +90,70 @@ const EachNews = () => {
   }, [id]);
 
   return (
-    <Grid container justifyContent="space-evenly" direction="row-reverse" className={classes.root} >
-        <Grid className={classes.newData}>
-        <Typography   component="h1" variant="" className={classes.title} >
+    <Grid
+      container
+      justifyContent="space-evenly"
+      direction="row-reverse"
+      className={classes.root}
+    >
+      <Grid className={classes.newData}>
+        <Typography component="h1" variant="" className={classes.title}>
           {data?.post?.title}
         </Typography>
       </Grid>
-      
-    
-    <Searchbar/>
-       
-    <Grid xs={12} md={7} className={classes.root}>
-      
-    
-      <div style={{ backgroundColor: "#fff" }}>
-        <Grid>
-          <img src={"http://charity.mykanoon.ir/File/Get/" + data?.post?.imageIds} className={classes.image}></img>
-        </Grid>
-        <Grid>
-        <div style={{ paddingRight:"24px", display: "flex", alignItems: "center", justifyContent: "flex-end" }} className="text">
-        {data?.post?.createDate}
-          <CalendarTodayIcon style={{ color: "#000", marginLeft: "5px" }} fontSize="small" />
+
+      <Searchbar />
+
+      <Grid xs={12} md={7} className={classes.root}>
+        <div style={{ backgroundColor: "#fff" }}>
+          <Grid>
+            <img
+              src={
+                "http://charity.mykanoon.ir/File/Get/" + data?.post?.imageIds
+              }
+              className={classes.image}
+            ></img>
+          </Grid>
+          <Grid>
+            <div
+              style={{
+                paddingRight: "24px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "flex-end",
+              }}
+              className="text"
+            >
+              {data?.post?.createDate}
+              <CalendarTodayIcon
+                style={{ color: "#000", marginLeft: "5px" }}
+                fontSize="small"
+              />
+            </div>
+          </Grid>
+          <Grid className={classes.content}>
+            <Typography
+              style={{
+                fontWeight: "600",
+                fontSize: "24px",
+              }}
+            >
+              {data?.post?.title}
+            </Typography>
+            <div
+              style={{
+                fontSize: "14px",
+                lineHeight: "30px",
+                textAlign: "justify",
+                fontWeight: "400",
+                marginTop: "20px",
+              }}
+              dangerouslySetInnerHTML={{ __html: data?.post?.content }}
+              className="ck-content"
+            ></div>
+          </Grid>
         </div>
-        </Grid>
-        <Grid className={classes.content}>
-          <Typography
-            style={{
-              fontWeight: "600",
-              fontSize: "24px",
-            }}
-          >
-            {data?.post?.title}
-          </Typography>
-          <div
-            style={{ fontSize: "14px", lineHeight: "30px", textAlign: "justify", fontWeight: "400", marginTop: "20px" }}
-            dangerouslySetInnerHTML={{ __html: data?.post?.content }}
-            className="ck-content"
-          ></div>
-
-        </Grid>
-      </div>
-
-    </Grid>
+      </Grid>
     </Grid>
   );
 };

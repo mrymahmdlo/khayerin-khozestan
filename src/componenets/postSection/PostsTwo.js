@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     width: "100%",
     height: "21vw",
     marginBottom: 30,
-    backgroundColor: "#fff" ,
+    backgroundColor: "#fff",
     "@media (max-width: 700px)": {
       height: "50vw",
     },
@@ -59,7 +59,7 @@ export default function TwoPosts({ postsData }) {
       <Grid
         container
         spacing={4}
-        style={{ textAlign: "right", marginBottom: 100}}
+        style={{ textAlign: "right", marginBottom: 100 }}
       >
         <Grid item xs={12} sm={6}>
           <div className={classes.outer}>
@@ -80,10 +80,10 @@ export default function TwoPosts({ postsData }) {
           >
             موسسه خیرین مدرسه ساز خوستان
           </Typography>
-          <Link to={`/News/${postsData[2].id}`} >
-          <Typography variant="h5" component="h5" className={classes.title}>
-            {postsData[2].title}
-          </Typography>
+          <Link to={`/News/${postsData[2].id}`}>
+            <Typography variant="h5" component="h5" className={classes.title}>
+              {postsData[2].title}
+            </Typography>
           </Link>
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -105,10 +105,10 @@ export default function TwoPosts({ postsData }) {
           >
             موسسه خیرین مدرسه ساز خوزستان
           </Typography>
-          <Link to={`/News/${postsData[5].id}`} >
-          <Typography variant="h5" component="h5" className={classes.title}>
-            {postsData[5].title}
-          </Typography>
+          <Link to={`/News/${postsData[5].id}`}>
+            <Typography variant="h5" component="h5" className={classes.title}>
+              {postsData[5].title}
+            </Typography>
           </Link>
         </Grid>
       </Grid>
