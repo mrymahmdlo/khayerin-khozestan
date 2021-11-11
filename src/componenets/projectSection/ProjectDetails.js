@@ -8,6 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import './ProjectDetails.css';
 
+
 const base = "http://charity.mykanoon.ir/api";
 
 const useStyles=makeStyles(()=>({
@@ -20,7 +21,7 @@ const useStyles=makeStyles(()=>({
     imagesBox :{
         margin: '1em',
         textAlign: "center",
-        backgroundColor: '#aabec8',
+        backgroundColor: '#fff',
         borderRadius: '6px',
         padding: '1em'
     },
@@ -79,7 +80,13 @@ const ProjectDetails = () => {
                         </div>
                     </div>
                 </div>
+                
             </div>
+
+            
+            <progress value="3333" max="10000">33%</progress>
+            <h5 style={{margin: '0em auto'}}> میزان پیشرفت پروژه </h5>
+  
             <div className={classes.imagesBox}>
                 <h2 style={{margin: '0em auto'}}>عکس های پروژه</h2>
                 <Grid lg={4} sm={6} xs={12}>{data?.project?.imageIds.map((item)=>

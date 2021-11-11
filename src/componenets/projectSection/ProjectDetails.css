@@ -25,7 +25,7 @@
 .Details-div{
     margin: 5% auto;
     font-size: large;
-    border-inline: solid 3px #005d83;
+    border-inline: solid 3px #09cc7f;
 }
 .project-info{
     padding: 1em;
@@ -35,14 +35,28 @@
     width: 100%;
     min-height: 5em;
     max-height: 8em;
-    background-color: #4f86a0 !important;
-    color: #000 !important;
+    background-color: #09cc7f !important;
+    color: #fff !important;
     transition: all 0.7s !important;
 }
 .button:hover{
-    background: #005d83 !important;
-    color: #fff !important;
+    background: #fff !important;
+    color: #09cc7f !important;
 }
+
+progress {
+    border-radius: 2px; 
+    width: 100%;
+    height: 10px;
+  }
+  progress::-webkit-progress-bar {
+    background-color: #fff;
+    border-radius: 7px;
+  }
+  progress::-webkit-progress-value {
+    background-color: #09cc7f;
+    border-radius: 7px;
+  }
 
 @media screen and (max-width: 3000px) and (min-width: 1024px){
     .Details{

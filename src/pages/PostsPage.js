@@ -6,7 +6,43 @@ import { CircularProgress,Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { GetData } from "../services/APIengine";
 import { Link } from "react-router-dom";
+import SearchIcon from "@material-ui/icons/Search";
 import Button from "@material-ui/core/Button";
+import { create } from "jss";
+import rtl from "jss-rtl";
+import {
+  withStyles,
+  createStyles,
+  InputBase,
+  Hidden,
+  createTheme,
+  StylesProvider,
+  ThemeProvider,
+  jssPreset,
+} from "@material-ui/core";
+const theme = createTheme({
+  direction: "rtl",
+});
+const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
+
+const StyledInput = withStyles((theme) =>
+  createStyles({
+    root: {},
+    input: {
+      borderRadius: 0,
+      position: "relative",
+      backgroundColor: "#fff",
+      border: "1px solid #fff",
+      fontSize: 12,
+      padding: "12px 17px",
+      "&:focus": {
+        backgroundColor: "#fff",
+        border: `1px solid #fff !important`,
+      },
+      //   paddingBottom: 12,
+    },
+  })
+)(InputBase);
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -118,7 +154,7 @@ export default function NewsPage() {
         <div>
           {/* {news ? <News newsData={news.postSection.posts} /> : null} */}
           {data ? (
-            <Grid container justifyContent='center' className={classes.root} spacing={2}>
+            <Grid container justifyContent="space-between" className={classes.root} >
               {currentItems.map((item) => (
                 <Grid item xs={12} lg={7}   className={classes.item}>
 
@@ -169,14 +205,68 @@ export default function NewsPage() {
                   </div> */}
                 </Grid>
               ))}
+              <Hidden mdDown>
+              <Grid lg={4} item container direction="column">
+                <div
+                  style={{
+                    padding: "30px",
+                    backgroundColor: "#f6f6f6",
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "100%",
+                    alignItems: "center",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      width: "100%",
+                      justifyContent: "center",
+                      direction: "rtl",
+                    }}
+                  >
+                    <Button
+                      style={{
+                        backgroundColor: "#09cc7f",
+                      }}
+                      disabled
+                    >
+                      <SearchIcon style={{ color: "#fff" }} />
+                    </Button>
+                    <ThemeProvider theme={theme}>
+                      <StylesProvider jss={jss}>
+                        <StyledInput
+                          placeholder="جست و جو"
+                          style={{
+                            width: "100%",
+                          }}
+                        />
+                      </StylesProvider>
+                    </ThemeProvider>
+                  </div>
+                  <div
+                    style={{
+                      width: "100%",
+                      marginTop: "15px",
+                    }}
+                  >
+                    <Button
+                      style={{
+                        backgroundColor: "#09cc7f",
+                        width: "100%",
+                        color: "#fff",
+                        padding: "10px",
+                      }}
+                    >
+                      جست و جو
+                    </Button>
+                  </div>
+                </div>
+                </Grid>
+            </Hidden>
             </Grid>
           ) : null}
-          <Pagination
-            itemsPerPage={itemsPerPage}
-            allItems={allItems}
-            paginate={paginate}
-            currentPage={currentPage}
-          />
+         
         </div>
       ) : (
         <CircularProgress style={{ marginTop: "10vh" }} />

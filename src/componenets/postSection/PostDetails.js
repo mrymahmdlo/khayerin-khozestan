@@ -36,11 +36,13 @@ const useStyles = makeStyles(() => ({
     paddingBottom:'40px'
   },
   title: {
-    borderRight: "5px solid #00303F",
+    borderRight: "5px solid #09cc7f",
     paddingRight: 10,
+    color: "#09cc7f",
     "@media (max-width: 600px)": {
       fontSize: "1.4em",
-      borderRight: "3px solid #00303F",
+      borderRight: "3px solid #09cc7f",
+      color: "#09cc7f",
     },
   },
   summary: {
@@ -88,7 +90,7 @@ const EachNews = () => {
   return (
     <Grid sm={9} className={classes.root}>
       <Grid className={classes.newData}>
-        <Typography component="h1" variant="" className={classes.title}>
+        <Typography  component="h1" variant="" className={classes.title} >
           {data?.post?.title}
         </Typography>
         <Typography component="h3" variant="" className={classes.summary}>
@@ -121,7 +123,7 @@ const EachNews = () => {
         </Grid>
       </div>
 
-      {data?.newPosts ? (
+      {/* {data?.newPosts ? (
         <>
           <div
             style={{
@@ -152,7 +154,7 @@ const EachNews = () => {
             ))}
           </Grid>
         </>
-      ) : null}
+      ) : null} */}
     </Grid>
   );
 };
