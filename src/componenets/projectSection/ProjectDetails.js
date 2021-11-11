@@ -84,7 +84,7 @@ const ProjectDetails = () => {
             </div>
 
             
-            <progress value="3333" max="10000">33%</progress>
+            <progress value="3333" max="10000"> 33% </progress>
             <h5 style={{margin: '0em auto'}}> میزان پیشرفت پروژه </h5>
   
             <div className={classes.imagesBox}>
