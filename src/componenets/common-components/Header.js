@@ -1,22 +1,22 @@
 import { React } from "react";
 import "./header.css";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import {Hidden} from "@material-ui/core";
 import NavBar from "./NavBar";
 import AppBarMenu from "./AppBar";
 
 export default function Header() {
 
   function ChangeHeader() {
-    const matches = useMediaQuery("(min-width:600px)");
-
-    if (!matches) {
-      return (
+    return(
+      <>
+      <Hidden mdUp>
         <AppBarMenu />
-      );
-    }
-    return (
-      <NavBar />
-    );
+      </Hidden>
+      <Hidden mdDown>
+        <NavBar />
+      </Hidden>
+      </>
+    )
   }
 
   return <>{ChangeHeader()}</>;

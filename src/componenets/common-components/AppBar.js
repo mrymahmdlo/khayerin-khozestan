@@ -3,8 +3,6 @@ import "./header.css";
 import Logo from "../../assets/images/khayerin-logo.png";
 import { Divider } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Drawer from "@material-ui/core/Drawer";
@@ -14,9 +12,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
-import { withStyles } from "@material-ui/core/styles";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
 
 const useStyles = makeStyles({
     Button: {
@@ -80,13 +75,13 @@ export default function AppBarMenu(){
         >
           <List>
             <Link to={`/`} className="link" style={{ width: "100%" }}>
-              <ListItem key="home">
+              <ListItem>
                 <ListItemText className={classes.list__item} primary="خانه" />
               </ListItem>
             </Link>
             <Divider variant="middle" />
             <Link to={`/Projects`} className="link" style={{ width: "100%" }}>
-              <ListItem key="news">
+              <ListItem>
                 <ListItemText className={classes.list__item} primary="پروژه ها" />
               </ListItem>
             </Link>
@@ -96,37 +91,37 @@ export default function AppBarMenu(){
               className="link"
               style={{ width: "100%" }}
             >
-              <ListItem key="philanthropists">
+              <ListItem>
                 <ListItemText className={classes.list__item} primary="دربارۀ خیرین" />
               </ListItem>
             </Link>
             <Link
-              to={`/`}
+              to={`/About`}
               className="link"
               style={{ width: "100%",paddingRight: "0.5em" }}
             >
-              <ListItem key="philanthropists">
+              <ListItem>
                 <ListItemText className={classes.list__item} primary="تاریخچۀ موسسه +" />
               </ListItem>
             </Link>
             <Link
-              to={`/`}
+              to={`/Appreciations`}
               className="link"
               style={{ width: "100%",paddingRight: "0.5em" }}
             >
-              <ListItem key="philanthropists">
+              <ListItem>
                 <ListItemText className={classes.list__item} primary="تقدیرنامه ها +" />
               </ListItem>
             </Link>
             <Divider variant="middle" />
             <Link to={`/Philanthropists`} className="link" style={{ width: "100%" }}>
-              <ListItem key="projects">
+              <ListItem>
                 <ListItemText className={classes.list__item} primary="خیرین" />
               </ListItem>
             </Link>
             <Divider variant="middle" />
             <Link to={`/News`} className="link" style={{ width: "100%" }}>
-              <ListItem key="projects">
+              <ListItem>
                 <ListItemText className={classes.list__item} primary="اخبار و اطلاعیه ها" />
               </ListItem>
             </Link>
