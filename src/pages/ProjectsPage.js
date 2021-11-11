@@ -369,46 +369,46 @@ export default function AllProjects() {
                   </div>
                 </div>
 
-                <div className={classes.category}>
-                  <Typography className="title">دسته بندی پروژه ها</Typography>
-                  <div className="divider"></div>
+                {/*<div className={classes.category}>*/}
+                {/*  <Typography className="title">دسته بندی پروژه ها</Typography>*/}
+                {/*  <div className="divider"></div>*/}
 
-                  <Link to='/Projects/half-built' className="item">
-                    <Typography
-                        onClick={() => setCurrentTypeId(1)}
-                    >
-                      پروژه های نیمه تمام
-                    </Typography>
-                    <div className="divider"></div>
-                  </Link>
-                  <Link to='/Projects/overhauled' className="item">
-                    <Typography
-                        onClick={() => setCurrentTypeId(2)}
-                    >
-                      پروژه های بازسازی تخریبی
-                    </Typography>
-                    <div className="divider"></div>
-                  </Link>
-                  <Link to='/Projects/completed' className="item">
-                    <Typography
-                        onClick={() => setCurrentTypeId(3)}
-                    >
-                      پروژه های ساخته شده
-                    </Typography>
-                    <div className="divider"></div>
-                  </Link>
-                  <Link to='/Projects/under-construction' className="item">
-                    <Typography
-                        onClick={() => setCurrentTypeId(4)}
-                    >
-                      پروژه های در حال انجام
-                    </Typography>
-                    <div className="divider"></div>
-                  </Link>
+                {/*  <Link to='/Projects/half-built' className="item">*/}
+                {/*    <Typography*/}
+                {/*        onClick={() => setCurrentTypeId(1)}*/}
+                {/*    >*/}
+                {/*      پروژه های نیمه تمام*/}
+                {/*    </Typography>*/}
+                {/*    <div className="divider"></div>*/}
+                {/*  </Link>*/}
+                {/*  <Link to='/Projects/overhauled' className="item">*/}
+                {/*    <Typography*/}
+                {/*        onClick={() => setCurrentTypeId(2)}*/}
+                {/*    >*/}
+                {/*      پروژه های بازسازی تخریبی*/}
+                {/*    </Typography>*/}
+                {/*    <div className="divider"></div>*/}
+                {/*  </Link>*/}
+                {/*  <Link to='/Projects/completed' className="item">*/}
+                {/*    <Typography*/}
+                {/*        onClick={() => setCurrentTypeId(3)}*/}
+                {/*    >*/}
+                {/*      پروژه های ساخته شده*/}
+                {/*    </Typography>*/}
+                {/*    <div className="divider"></div>*/}
+                {/*  </Link>*/}
+                {/*  <Link to='/Projects/under-construction' className="item">*/}
+                {/*    <Typography*/}
+                {/*        onClick={() => setCurrentTypeId(4)}*/}
+                {/*    >*/}
+                {/*      پروژه های در حال انجام*/}
+                {/*    </Typography>*/}
+                {/*    <div className="divider"></div>*/}
+                {/*  </Link>*/}
 
 
 
-                </div>
+                {/*</div>*/}
               </Grid>
             </Hidden>
           </Grid>
