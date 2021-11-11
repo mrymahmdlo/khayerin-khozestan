@@ -189,12 +189,12 @@ const ProjectComponent = ({ imgSrc, title, philanthropist, cityName, fund, id, t
         <Link
           to={
             typeId === 1
-              ? `/half-built/${id}`
+              ? `/HalfBuilt/${id}`
               : typeId === 2
-              ? `/overhauled/${id}`
+              ? `/Overhauled/${id}`
               : typeId === 3
-              ? `/completed/${id}`
-              : `/under-construction/${id}`
+              ? `/Completed/${id}`
+              : `/UnderConstruction/${id}`
           }
         >
           <Typography className="title">{title}</Typography>
@@ -260,7 +260,6 @@ export default function AllProjects() {
                     cityName={item.cityName}
                     
                   />
-                 
                 </Grid>
               ))}
             </Grid>

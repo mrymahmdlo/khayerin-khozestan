@@ -234,7 +234,6 @@ export default function NewsPage() {
                   id={item.id}
                   key={item.id}
                   />
-             
                 </Grid>
                 
               ))}
