@@ -1,0 +1,19 @@
+.contrs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1vh;
+    margin-top: 0.5vh;
+    background-color: #00303F;
+    color: #fff !important;
+} 
+
+.contrs_item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    flex-direction: column;
+    color: #fff !important;
+}
