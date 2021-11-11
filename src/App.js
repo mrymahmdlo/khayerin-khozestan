@@ -16,6 +16,7 @@ import AboutUs from "./componenets/aboutSection/AboutUs";
 import Header from './componenets/common-components/Header';
 import Footer from './componenets/common-components/Footer';
 import { ArrowUpward } from "@material-ui/icons";
+import ImageObj from "./assets/images/letter of appreciations/ImageObj";
 
 function App() {
 
@@ -64,6 +65,7 @@ function App() {
             <Route path='/half-built/:id' component={ProjectDetails} />
             <Route path='/under-construction/:id' component={ProjectDetails} />
             <Route path='/About' component={AboutUs}/>
+            <Route path='/Appreciations' component={ImagesObj}/>
             <Route path='/' exact component={LandingPage} />
           </Switch>
           <Footer />

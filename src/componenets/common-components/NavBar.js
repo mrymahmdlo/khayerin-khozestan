@@ -18,197 +18,52 @@ import { withStyles } from "@material-ui/core/styles";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 
-const useStyles = makeStyles({
-  Button: {
-    display: "flex",
-    position: "relative",
-    height: "100%",
-    width: "auto",
-    "& > *": {
-      color: "#072366",
-      fontSize: "1.1rem",
-    },
-  },
-  buttonOnHover: {
-    "&:hover": {
-      color: "#20C679 !important",
-    },
-  },
-  button__overlay: {
-    position: "absolute",
-    backgroundColor: "#000",
-    opacity: 0,
-    height: "100%",
-    width: "100%",
-    transition: "opacity 0.5s",
-  },
-  list: {
-    width: 200,
-  },
-  list__item: {
-    textAlign: "right",
-    color: "#000 !important",
-    "&>span": {
-      fontSize: "1.2rem !important",
-    },
-  },
-});
-
-export default function Header() {
-  const classes = useStyles();
-
-  const [right, setState] = useState(false);
-
-  const toggleDrawer = (open) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
-
-    setState(open);
-  };
-
-  const list = () => (
-
-    <div
-      className={classes.list}
-      role="presentation"
-      onClick={toggleDrawer(false)}
-      onKeyDown={toggleDrawer(false)}
-    >
-      <List>
-        <Link to={`/`} className="link" style={{ width: "100%" }}>
-          <ListItem key="home">
-            <ListItemText className={classes.list__item} primary="خانه" />
-          </ListItem>
-        </Link>
-        <Divider variant="middle" />
-        <Link to={`/Projects`} className="link" style={{ width: "100%" }}>
-          <ListItem key="news">
-            <ListItemText className={classes.list__item} primary="پروژه ها" />
-          </ListItem>
-        </Link>
-        <Divider variant="middle" />
-        <Link
-          to={`/`}
-          className="link"
-          style={{ width: "100%" }}
-        >
-          <ListItem key="philanthropists">
-            <ListItemText className={classes.list__item} primary="دربارۀ خیرین" />
-          </ListItem>
-        </Link>
-        <Link
-          to={`/`}
-          className="link"
-          style={{ width: "100%",paddingRight: "0.5em" }}
-        >
-          <ListItem key="philanthropists">
-            <ListItemText className={classes.list__item} primary="تاریخچۀ موسسه +" />
-          </ListItem>
-        </Link>
-        <Link
-          to={`/`}
-          className="link"
-          style={{ width: "100%",paddingRight: "0.5em" }}
-        >
-          <ListItem key="philanthropists">
-            <ListItemText className={classes.list__item} primary="تقدیرنامه ها +" />
-          </ListItem>
-        </Link>
-        <Divider variant="middle" />
-        <Link to={`/Philanthropists`} className="link" style={{ width: "100%" }}>
-          <ListItem key="projects">
-            <ListItemText className={classes.list__item} primary="خیرین" />
-          </ListItem>
-        </Link>
-        <Divider variant="middle" />
-        <Link to={`/News`} className="link" style={{ width: "100%" }}>
-          <ListItem key="projects">
-            <ListItemText className={classes.list__item} primary="اخبار و اطلاعیه ها" />
-          </ListItem>
-        </Link>
-      </List>
-    </div>
-  );
-
-  function ChangeHeader() {
-    const matches = useMediaQuery("(min-width:600px)");
+export default function NavBar(){
 
     const StyledMenu = withStyles({
-      paper: {
-        borderTop: "5px solid #20C679",
-        borderRadius: 0,
-        backgroundColor: "rgba(0,0,0,0.6)",
-        margin: 0,
-        padding: 0,
-      },
-    })((props) => (
-      <Menu
-        elevation={0}
-        getContentAnchorEl={null}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "center",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "center",
-        }}
-        {...props}
-      />
-    ));
+        paper: {
+          borderTop: "5px solid #20C679",
+          borderRadius: 0,
+          backgroundColor: "rgba(0,0,0,0.6)",
+          margin: 0,
+          padding: 0,
+        },
+      })((props) => (
+        <Menu
+          elevation={0}
+          getContentAnchorEl={null}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "center",
+          }}
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "center",
+          }}
+          {...props}
+        />
+      ));
+  
+      const [anchorEl, setAnchorEl] = useState(null);
+      const [anchorEl1, setAnchorEl1] = useState(null);
+  
+      const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+      };
+  
+      const handleClick1 = (event) => {
+        setAnchorEl1(event.currentTarget);
+      };
+  
+      const handleClose = () => {
+        setAnchorEl(null);
+      };
+      const handleClose1 = () => {
+        setAnchorEl1(null);
+      };
 
-    const [anchorEl, setAnchorEl] = useState(null);
-    const [anchorEl1, setAnchorEl1] = useState(null);
-
-    const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
-    };
-
-    const handleClick1 = (event) => {
-      setAnchorEl1(event.currentTarget);
-    };
-
-    const handleClose = () => {
-      setAnchorEl(null);
-    };
-    const handleClose1 = () => {
-      setAnchorEl1(null);
-    };
-
-    const StyledMenuItem = withStyles(() => ({}))(MenuItem);
-
-    if (!matches) {
-      return (
-        <AppBar className="header">
-          <Toolbar
-            variant="dense"
-            className="app-bar"
-            style={{ width: "100%" }}
-          >
-            <img className="media" src={Logo} alt="khayerin logo" />
-            <IconButton
-              onClick={toggleDrawer(true)}
-              edge="start"
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="menu"
-              style={{color: "#010A1F"}}
-            >
-              <MenuIcon fontSize="large" />
-            </IconButton>
-            <Drawer anchor="right" open={right} onClose={toggleDrawer(false)}>
-              {list()}
-            </Drawer>
-          </Toolbar>
-        </AppBar>
-      );
-    }
-    return (
-      <>
+    return(
+        <>
         <div className="header">
           <div className="content">
               <button className="btn1">
@@ -325,8 +180,5 @@ export default function Header() {
           </div>
         </div>
       </>
-    );
-  }
-
-  return <>{ChangeHeader()}</>;
+    )
 }

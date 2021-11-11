@@ -13,8 +13,7 @@ const base='http://charity.mykanoon.ir/api';
 
 const useStyles=makeStyles(()=>({
     content: {
-        margin: '1em auto 0',
-        padding: '2em 2em 5em'
+        padding: '0em 2em 5em'
     },
     philo: {
         backgroundImage: 'radial-gradient(ellipse farthest-corner at 0 140%, rgba(0,191,3, 0.05) 0%, rgba(0,191,3, 0.05) 70%, rgba(0,191,3, 0.15) 70%)',
