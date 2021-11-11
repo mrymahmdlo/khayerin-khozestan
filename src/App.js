@@ -60,10 +60,10 @@ function App() {
             <Route path='/News/:id' component={EachNews} />
             <Route path='/News' exact component={NewsPage} />
             <Route path='/Philanthropists/:id' component={PhiloDetails} />
-            <Route path='/overhauled/:id' component={ProjectDetails} />
-            <Route path='/completed/:id' component={ProjectDetails} />
-            <Route path='/half-built/:id' component={ProjectDetails} />
-            <Route path='/under-construction/:id' component={ProjectDetails} />
+            <Route path='/Overhauled/:id' component={ProjectDetails} />
+            <Route path='/Completed/:id' component={ProjectDetails} />
+            <Route path='/HalfBuilt/:id' component={ProjectDetails} />
+            <Route path='/UnderConstruction/:id' component={ProjectDetails} />
             <Route path='/About' component={AboutUs}/>
             <Route path='/Appreciations' component={ImagesObj}/>
             <Route path='/' exact component={LandingPage} />

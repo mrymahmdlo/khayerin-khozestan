@@ -1,10 +1,4 @@
 @font-face {
-  font-family: 'yekan';
-  src: url('./assets/fonts/Yekan.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
   font-family: 'iranSans';
   src: url('./assets/fonts/IRANSansWeb\(FaNum\).woff2') format('woff2');
   font-weight: normal;

@@ -147,7 +147,7 @@ export default function AppBarMenu(){
             >
               <MenuIcon fontSize="large" />
             </IconButton>
-            <Drawer anchor="right" open={right} onClose={toggleDrawer(false)}>
+            <Drawer anchor="right" open={right} onClose={toggleDrawer(false)} >
               {list()}
             </Drawer>
           </Toolbar>
