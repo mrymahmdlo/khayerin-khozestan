@@ -6,6 +6,9 @@ import Button from "@material-ui/core/Button";
 import './PhiloDetails.css';
 import NumberCreator from "../common-components/NumberCreator";
 import ToFarsiNumber from '../common-components/Converter';
+import banknote from '../../assets/images/banknotes-icon.png';
+import location from '../../assets/images/location-icon.png';
+import numbers from '../../assets/images/numbers-icon (1).png';
 
 const base = "http://charity.mykanoon.ir/api";
 
@@ -45,9 +48,13 @@ const useStyles=makeStyles(()=>({
         textAlign: 'right',
         alignSelf: 'center'
     },
+    icon: {
+        width: '20px',
+        marginBottom: '-5px',
+        marginLeft: '2px'
+    },
     button: {
-        backgroundColor: '#a48668',
-        color: '#000',
+        backgroundColor: '#48dd8e',
         width: '100%',
         borderRadius: '6px',
         paddingTop: '1em',
@@ -57,8 +64,7 @@ const useStyles=makeStyles(()=>({
         direction: 'ltr',
         transition: 'all 0.5s',
         '&:hover': {
-            backgroundColor: '#4f463a',
-            color: '#fff',
+            backgroundColor: '#ACDDAC',
             borderRadius: '20px 4px'
         }
     }
@@ -79,9 +85,18 @@ const PhiloDetails = () => {
             <div className='info-div'>
                 <h1 className='title'>{`${data?.philanthropist?.firstName} ${data?.philanthropist?.lastName ? data?.philanthropist?.lastName : ''}`}</h1>
                 <div className='info'>
-                    <h3>شهر : {data?.philanthropist?.cityName}</h3>
-                    <h3>تعداد پروژه ها : {data?.philanthropist?.projectCounts}</h3>
-                    <h3>مبلغ اهداء شده : {ToFarsiNumber(NumberCreator(data?.philanthropist?.sparedFund))} تومان</h3>
+                    <h3>
+                        <span>شهر : {data?.philanthropist?.cityName}</span>
+                        <img src={location} alt="cityName" className={classes.icon}/>
+                    </h3>
+                    <h3>
+                        <span>تعداد پروژه ها : {data?.philanthropist?.projectCounts}</span>
+                        <img src={numbers} alt="projectCounts" className={classes.icon}/>
+                    </h3>
+                    <h3>
+                        <span>مبلغ اهداء شده : {ToFarsiNumber(NumberCreator(data?.philanthropist?.sparedFund))} تومان</span>
+                        <img src={banknote} alt="sparedFund" className={classes.icon}/>
+                    </h3>
                 </div>
             </div>
             <div className='details'>

@@ -225,7 +225,7 @@ export default function Header() {
                   aria-controls="customized-menu1"
                   aria-haspopup="true"
                 />
-                درباره خیرین
+                دربارۀ خیرین
               </Button>
             </Link>
             <StyledMenu
