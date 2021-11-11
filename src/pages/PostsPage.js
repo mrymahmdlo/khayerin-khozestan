@@ -8,6 +8,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import Button from "@material-ui/core/Button";
 import { create } from "jss";
 import rtl from "jss-rtl";
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import {
   withStyles,
   createStyles,
@@ -102,23 +103,32 @@ const useStyles = makeStyles(() => ({
   
 }));
 
-const NewsComponent = ({imgSrc, title , id})=>{
+const NewsComponent = ({imgSrc , id,item})=>{
   const classes = useStyles();
 
   return (
+    <Link to={`/News/${id}`}>
     <div  className={classes.news} >
       <div>
           <img src={imgSrc} alt='news' width={'100%'} height={'auto'} />
       </div>
+      <Grid>
+        <div style={{ paddingRight:"24px", display: "flex", alignItems: "center", justifyContent: "flex-end", color: "black" }} className="text">
+        {item.createDate}
+          <CalendarTodayIcon style={{ color: "#000", marginLeft: "5px" }} fontSize="small" />
+        </div>
+        </Grid>
       <div className='description' >
-          <Link to={`/News/${id}`}>
+          
+                  
                    <Typography className='title' >
-                         {title}
+                         {item.title}
                   </Typography>
-          </Link>
+          
          
       </div>
     </div>
+    </Link>
   )
 }
 
@@ -219,48 +229,14 @@ export default function NewsPage() {
                     "http://charity.mykanoon.ir/File/Get/" +
                           item.imageIds[0]
                   }
-                  title={item.title}
+                  item={item}
                   description={'text'}
                   id={item.id}
                   key={item.id}
                   />
-                  {/* <div className={classes.post}>
-                    <Link to={`/News/${item.id}`}>
-                      <img
-                        src={
-                          "http://charity.mykanoon.ir/File/Get/" +
-                          item.imageIds[0]
-                        }
-                        className={classes.image}
-                        alt="post image"
-                      />
-                      <div
-                        className="content__item"
-                        style={{
-                          margin: "auto 5px",
-                          color: "#fff",
-                          height: 65,
-                        }}
-                      >
-                        {item.title}
-                      </div>
-                      <Button
-                        variant="contained"
-                        style={{
-                          width: "100%",
-                          marginTop: 9,
-                          borderRadius: 0,
-                          background: "#1b5263",
-                          color: "#fff",
-                          padding: 10,
-                        }}
-                        className={classes.button}
-                      >
-                        اطلاعات بیشتر
-                      </Button>
-                    </Link>
-                  </div> */}
+             
                 </Grid>
+                
               ))}
               </Grid>
             </Grid>
