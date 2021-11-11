@@ -80,21 +80,56 @@ export default function AppBarMenu(){
               </ListItem>
             </Link>
             <Divider variant="middle" />
-            <Link to={`/Projects`} className="link" style={{ width: "100%" }}>
+            <div className="link" style={{ width: "100%" }}>
               <ListItem>
                 <ListItemText className={classes.list__item} primary="پروژه ها" />
               </ListItem>
+            </div>
+            <Link
+                to={`/Projects`}
+                className="link"
+                style={{ width: "100%",paddingRight: "0.5em" }}
+            >
+              <ListItem>
+                <ListItemText className={classes.list__item} primary="پروژه های نیمه تمام +" />
+              </ListItem>
+            </Link>
+            <Link
+                to={`/Projects`}
+                className="link"
+                style={{ width: "100%",paddingRight: "0.5em" }}
+            >
+              <ListItem>
+                <ListItemText className={classes.list__item} primary="پروژه های بازسازی تخریبی +" />
+              </ListItem>
+            </Link>
+            <Link
+                to={`/Projects`}
+                className="link"
+                style={{ width: "100%",paddingRight: "0.5em" }}
+            >
+              <ListItem>
+                <ListItemText className={classes.list__item} primary="پروژه های ساخته شده +" />
+              </ListItem>
+            </Link>
+            <Link
+                to={`/Projects`}
+                className="link"
+                style={{ width: "100%",paddingRight: "0.5em" }}
+            >
+              <ListItem>
+                <ListItemText className={classes.list__item} primary="پروژه های در حال انجام +" />
+              </ListItem>
             </Link>
             <Divider variant="middle" />
-            <Link
-              to={`/`}
+            <div
               className="link"
               style={{ width: "100%" }}
             >
               <ListItem>
                 <ListItemText className={classes.list__item} primary="دربارۀ خیرین" />
               </ListItem>
-            </Link>
+            </div>
             <Link
               to={`/About`}
               className="link"
