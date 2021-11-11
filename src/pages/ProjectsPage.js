@@ -267,7 +267,7 @@ export default function AllProjects() {
           );
         }
       })
-    );
+    ).catch((err) => console.log(err));
   }, [currentTypId]);
 
   const theme = createTheme({
@@ -305,7 +305,8 @@ export default function AllProjects() {
                     id={item.id}
                     typeId={item.typeId}
                     fund={item.fund}
-                    cityName={item.cityName} />
+                    cityName={item.cityName}
+                  />
                 </Grid>
               ))}
             </Grid>
@@ -378,36 +379,36 @@ export default function AllProjects() {
                     >
                       پروژه های نیمه تمام
                     </Typography>
+                    <div className="divider"></div>
                   </Link>
-                  <div className="divider"></div>
                   <Link to='/Projects/overhauled' className="item">
                     <Typography
                         onClick={() => setCurrentTypeId(2)}
                     >
                       پروژه های بازسازی تخریبی
                     </Typography>
+                    <div className="divider"></div>
                   </Link>
-                  <div className="divider"></div>
-
                   <Link to='/Projects/completed' className="item">
                     <Typography
                         onClick={() => setCurrentTypeId(3)}
                     >
                       پروژه های ساخته شده
                     </Typography>
+                    <div className="divider"></div>
                   </Link>
-
-                  <div className="divider"></div>
                   <Link to='/Projects/under-construction' className="item">
                     <Typography
                         onClick={() => setCurrentTypeId(4)}
                     >
                       پروژه های در حال انجام
                     </Typography>
+                    <div className="divider"></div>
                   </Link>
 
+
+
                 </div>
-                <div style={{marginBottom: '2em'}}></div>
               </Grid>
             </Hidden>
           </Grid>
