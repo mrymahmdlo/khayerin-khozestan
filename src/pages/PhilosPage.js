@@ -2,10 +2,12 @@ import React, {useState, useEffect} from "react";
 import {makeStyles} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import {Link} from "react-router-dom";
-import Button from "@material-ui/core/Button";
 import ToFarsiNumber from '../componenets/common-components/Converter';
 import NumberCreator from "../componenets/common-components/NumberCreator";
 import { CircularProgress } from '@material-ui/core';
+import './PhilosPage.css';
+import banknote from '../assets/images/banknotes-icon.png';
+import location from '../assets/images/location-icon.png';
 
 const base='http://charity.mykanoon.ir/api';
 
@@ -15,10 +17,11 @@ const useStyles=makeStyles(()=>({
         padding: '2em 2em 5em'
     },
     philo: {
-        backgroundColor: '#CDAC81',
+        backgroundImage: 'radial-gradient(ellipse farthest-corner at 0 140%, rgba(0,191,3, 0.05) 0%, rgba(0,191,3, 0.05) 70%, rgba(0,191,3, 0.15) 70%)',
         color: '#000',
         margin: '0.7em',
-        borderRadius: '6px'
+        borderRadius: '6px',
+        boxShadow: '3px 5px 14px -2px rgba(0,0,0,0.4)'
     },
     philoPic: {
         backgroundColor: '#fff',
@@ -34,24 +37,40 @@ const useStyles=makeStyles(()=>({
         color: '#212121',
         width: '90%',
         margin: '0 auto 0.5em',
-        borderRadius: '4px'
+        borderRadius: '4px',
+        border: '1px solid #20C679'
     },
     info: {
-        backgroundColor: '#CDAC81',
         color: '#000',
         margin: '0.8em auto',
         textAlign: "center"
     },
+    icon: {
+        width: '20px',
+        marginBottom: '-5px',
+        marginLeft: '2px'
+    },
     button: {
-        backgroundColor: '#867257',
+        backgroundColor: '#fff',
         color: '#000',
         width: '100%',
+        height: '50px',
         borderRadius: '0 0 6px 6px',
         paddingTop: '1em',
         paddingBottom: '1em',
-        '&:hover': {
-            backgroundColor: '#4f463a',
-            color: '#fff'
+        fontSize: '14px',
+        borderTop: '1px solid #20C679',
+        transition: 'all 0.5s',
+        '&:after': {
+            display:'block',
+            content: '',
+            borderBottom: 'solid 3px #000',
+            transform: 'scaleX(0)',
+            transition: 'transform 500ms ease-in-out',
+        },
+        '&:hover:after': {
+            color: '#48dd8e',
+            transform: 'scaleX(1)'
         }
     }
 }));
@@ -76,14 +95,20 @@ export default function AllPhilos() {
                         <img src={`http://charity.mykanoon.ir/File/Get/${item.imageId}`} alt="philoPic" className={classes.philoPic}/>
                         <h3 className={classes.name}>{`${item.firstName} ${item.lastName ? item.lastName : ''}`}</h3>
                         <div className={classes.info}>
-                            <div>مبلغ اهدا شده : {ToFarsiNumber(NumberCreator(item.sparedFund))}<span> تومان</span></div>
-                            <div>{item.cityName}</div>
+                            <div>
+                                <span>مبلغ اهدا شده : {ToFarsiNumber(NumberCreator(item.sparedFund))}<span> تومان</span></span>
+                                <img src={banknote} alt="sparedFund" className={classes.icon}/>
+                            </div>
+                            <div>
+                                <span>شهر : {item.cityName}</span>
+                                <img src={location} alt="cityName" className={classes.icon}/>
+                            </div>
                         </div>
                         <div>
                             <Link to={`/Philanthropists/${item.id}`}>
-                                <Button variant='contained' className={classes.button}>
-                                    اطلاعات بیشتر
-                                </Button>
+                                <div className='info-button'>
+                                    <div className='button-title'>اطلاعات بیشتر</div>
+                                </div>
                             </Link>
                         </div>
                     </div>

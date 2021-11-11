@@ -10,6 +10,8 @@ import AllPhilos from "./pages/PhilosPage";
 import AllProjects from "./pages/ProjectsPage";
 import PhiloDetails from "./componenets/philoSection/PhiloDetails";
 import ProjectDetails from "./componenets/projectSection/ProjectDetails";
+import ImagesObj from "./componenets/aboutSection/Appreciation";
+import AboutUs from "./componenets/aboutSection/AboutUs";
 import Header from './componenets/common-components/Header';
 import Footer from './componenets/common-components/Footer';
 
@@ -29,6 +31,7 @@ function App() {
             <Route path='/completed/:id' component={ProjectDetails} />
             <Route path='/half-built/:id' component={ProjectDetails} />
             <Route path='/under-construction/:id' component={ProjectDetails} />
+            <Route path='/About' component={AboutUs}/>
             <Route path='/' exact component={LandingPage} />
           </Switch>
           <Footer />
