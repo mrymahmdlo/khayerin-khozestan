@@ -38,7 +38,8 @@ const useStyles = makeStyles({
       transition: "opacity 0.5s",
     },
     list: {
-      width: 200,
+      width: '100%',
+      padding: '0 1em'
     },
     list__item: {
       textAlign: "right",
@@ -80,37 +81,72 @@ export default function AppBarMenu(){
               </ListItem>
             </Link>
             <Divider variant="middle" />
-            <Link to={`/Projects`} className="link" style={{ width: "100%" }}>
+            <div className="link" style={{ width: "100%" }}>
               <ListItem>
                 <ListItemText className={classes.list__item} primary="پروژه ها" />
               </ListItem>
+            </div>
+            <Link
+                to={`/Projects`}
+                className="link"
+                style={{ width: "100%",paddingRight: "1em" }}
+            >
+              <ListItem>
+                <ListItemText className={classes.list__item} primary="پروژه های نیمه تمام -" />
+              </ListItem>
+            </Link>
+            <Link
+                to={`/Projects`}
+                className="link"
+                style={{ width: "100%",paddingRight: "1em" }}
+            >
+              <ListItem>
+                <ListItemText className={classes.list__item} primary="پروژه های بازسازی تخریبی -" />
+              </ListItem>
+            </Link>
+            <Link
+                to={`/Projects`}
+                className="link"
+                style={{ width: "100%",paddingRight: "1em" }}
+            >
+              <ListItem>
+                <ListItemText className={classes.list__item} primary="پروژه های ساخته شده -" />
+              </ListItem>
+            </Link>
+            <Link
+                to={`/Projects`}
+                className="link"
+                style={{ width: "100%",paddingRight: "1em" }}
+            >
+              <ListItem>
+                <ListItemText className={classes.list__item} primary="پروژه های در حال انجام -" />
+              </ListItem>
             </Link>
             <Divider variant="middle" />
-            <Link
-              to={`/`}
+            <div
               className="link"
               style={{ width: "100%" }}
             >
               <ListItem>
                 <ListItemText className={classes.list__item} primary="دربارۀ خیرین" />
               </ListItem>
-            </Link>
+            </div>
             <Link
               to={`/About`}
               className="link"
-              style={{ width: "100%",paddingRight: "0.5em" }}
+              style={{ width: "100%",paddingRight: "1em" }}
             >
               <ListItem>
-                <ListItemText className={classes.list__item} primary="تاریخچۀ موسسه +" />
+                <ListItemText className={classes.list__item} primary="تاریخچۀ موسسه -" />
               </ListItem>
             </Link>
             <Link
               to={`/Appreciations`}
               className="link"
-              style={{ width: "100%",paddingRight: "0.5em" }}
+              style={{ width: "100%",paddingRight: "1em" }}
             >
               <ListItem>
-                <ListItemText className={classes.list__item} primary="تقدیرنامه ها +" />
+                <ListItemText className={classes.list__item} primary="تقدیرنامه ها -" />
               </ListItem>
             </Link>
             <Divider variant="middle" />
