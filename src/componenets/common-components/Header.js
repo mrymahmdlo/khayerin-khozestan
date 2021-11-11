@@ -71,6 +71,7 @@ export default function Header() {
   };
 
   const list = () => (
+
     <div
       className={classes.list}
       role="presentation"
@@ -84,25 +85,31 @@ export default function Header() {
           </ListItem>
         </Link>
         <Divider variant="middle" />
-        <Link to={`/News`} className="link" style={{ width: "100%" }}>
+        <Link to={`/Projects`} className="link" style={{ width: "100%" }}>
           <ListItem key="news">
-            <ListItemText className={classes.list__item} primary="اخبار" />
+            <ListItemText className={classes.list__item} primary="پروژه ها" />
           </ListItem>
         </Link>
         <Divider variant="middle" />
         <Link
-          to={`/Philanthropists`}
+          to={`/`}
           className="link"
           style={{ width: "100%" }}
         >
           <ListItem key="philanthropists">
+            <ListItemText className={classes.list__item} primary="دربارۀ خیرین" />
+          </ListItem>
+        </Link>
+        <Divider variant="middle" />
+        <Link to={`/Philanthropists`} className="link" style={{ width: "100%" }}>
+          <ListItem key="projects">
             <ListItemText className={classes.list__item} primary="خیرین" />
           </ListItem>
         </Link>
         <Divider variant="middle" />
-        <Link to={`/Projects`} className="link" style={{ width: "100%" }}>
+        <Link to={`/News`} className="link" style={{ width: "100%" }}>
           <ListItem key="projects">
-            <ListItemText className={classes.list__item} primary="پروژه ها" />
+            <ListItemText className={classes.list__item} primary="اخبار و اطلاعیه ها" />
           </ListItem>
         </Link>
       </List>
