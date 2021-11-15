@@ -86,42 +86,43 @@ export default function AppBarMenu(){
                 <ListItemText className={classes.list__item} primary="پروژه ها" />
               </ListItem>
             </div>
-            <Link
-                to={`/Projects/half-built`}
-                className="link"
-                style={{ width: "100%",paddingRight: "1em" }}
-            >
               <ListItem>
-                <ListItemText className={classes.list__item} primary="پروژه های نیمه تمام -" />
+                <Link
+                    to={`/Projects/half-built`}
+                    className="link"
+                    style={{ width: "100%",paddingRight: "1em" }}
+                >
+                  <ListItemText className={classes.list__item} primary="پروژه های نیمه تمام -" />
+                </Link>
               </ListItem>
-            </Link>
-            <Link
-                to={`/Projects/overhauled`}
-                className="link"
-                style={{ width: "100%",paddingRight: "1em" }}
-            >
               <ListItem>
-                <ListItemText className={classes.list__item} primary="پروژه های بازسازی تخریبی -" />
+
+                <Link
+                    to={`/Projects/overhauled`}
+                    className="link"
+                    style={{ width: "100%",paddingRight: "1em" }}
+                >
+                  <ListItemText className={classes.list__item} primary="پروژه های بازسازی تخریبی -" />
+                </Link>
               </ListItem>
-            </Link>
-            <Link
-                to={`/Projects/completed`}
-                className="link"
-                style={{ width: "100%",paddingRight: "1em" }}
-            >
               <ListItem>
-                <ListItemText className={classes.list__item} primary="پروژه های ساخته شده -" />
+                <Link
+                    to={`/Projects/completed`}
+                    className="link"
+                    style={{ width: "100%",paddingRight: "1em" }}
+                >
+                  <ListItemText className={classes.list__item} primary="پروژه های ساخته شده -" />
+                </Link>
               </ListItem>
-            </Link>
-            <Link
-                to={`/Projects/under-construction`}
-                className="link"
-                style={{ width: "100%",paddingRight: "1em" }}
-            >
               <ListItem>
-                <ListItemText className={classes.list__item} primary="پروژه های در حال انجام -" />
+                <Link
+                    to={`/Projects/under-construction`}
+                    className="link"
+                    style={{ width: "100%",paddingRight: "1em" }}
+                >
+                  <ListItemText className={classes.list__item} primary="پروژه های در حال انجام -" />
+                </Link>
               </ListItem>
-            </Link>
             <Divider variant="middle" />
             <div
               className="link"
@@ -131,24 +132,24 @@ export default function AppBarMenu(){
                 <ListItemText className={classes.list__item} primary="دربارۀ خیرین" />
               </ListItem>
             </div>
-            <Link
-              to={`/About`}
-              className="link"
-              style={{ width: "100%",paddingRight: "1em" }}
-            >
               <ListItem>
-                <ListItemText className={classes.list__item} primary="تاریخچۀ موسسه -" />
+                <Link
+                    to={`/About`}
+                    className="link"
+                    style={{ width: "100%",paddingRight: "1em" }}
+                >
+                  <ListItemText className={classes.list__item} primary="تاریخچۀ موسسه -" />
+                </Link>
               </ListItem>
-            </Link>
-            <Link
-              to={`/Appreciations`}
-              className="link"
-              style={{ width: "100%",paddingRight: "1em" }}
-            >
               <ListItem>
-                <ListItemText className={classes.list__item} primary="تقدیرنامه ها -" />
+                <Link
+                    to={`/Appreciations`}
+                    className="link"
+                    style={{ width: "100%",paddingRight: "1em" }}
+                >
+                  <ListItemText className={classes.list__item} primary="تقدیرنامه ها -" />
+                </Link>
               </ListItem>
-            </Link>
             <Divider variant="middle" />
             <Link to={`/Philanthropists`} className="link" style={{ width: "100%" }}>
               <ListItem>
