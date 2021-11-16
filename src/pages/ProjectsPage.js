@@ -253,22 +253,12 @@ const ProjectComponent = ({
 
 export default function AllProjects() {
   const classes = useStyles();
-  const [currentTypId, setCurrentTypeId] = useState(0);
   const [data, setData] = useState();
   useEffect(() => {
     fetch(base + "/Tehran/ProjectGroup").then((response) =>
-      response.json().then((response) => {
-        if (!currentTypId) setData(response.projects);
-        else {
-          setData(
-            response.projects.filter((item) => {
-              return item.typeId === currentTypId;
-            })
-          );
-        }
-      })
+      response.json().then((response) => setData(response.projects))
     ).catch((err) => console.log(err));
-  }, [currentTypId]);
+  }, []);
 
   const theme = createTheme({
     direction: "rtl",
@@ -282,6 +272,13 @@ export default function AllProjects() {
           (status==='under-construction' ? type=3 :
               type=4));
   temp=temp?.filter(item=>item?.typeId===type)
+  let projectsCount=[0,0,0,0];
+  data?.map(item=>(
+      item.typeId===1 ? projectsCount[0]+=1 :
+          (item.typeId===2 ? projectsCount[1]+=1 :
+              (item.typeId===4 ? projectsCount[2]+=1 :
+                  projectsCount[3]+=1))
+  ))
 
   return (
     <>
@@ -335,7 +332,7 @@ export default function AllProjects() {
                       style={{
                         backgroundColor: "#09cc7f",
                       }}
-                      disabled
+
                     >
                       <SearchIcon style={{ color: "#fff" }} />
                     </Button>
@@ -374,41 +371,33 @@ export default function AllProjects() {
                   <div className="divider"></div>
 
                   <Link to='/Projects/half-built' className="item">
-                    <Typography
-                        onClick={() => setCurrentTypeId(1)}
-                    >
-                      پروژه های نیمه تمام
+                    <Typography>
+                      پروژه های نیمه تمام ({projectsCount[0]})
                     </Typography>
                     <div className="divider"></div>
                   </Link>
                   <Link to='/Projects/overhauled' className="item">
-                    <Typography
-                        onClick={() => setCurrentTypeId(2)}
-                    >
-                      پروژه های بازسازی تخریبی
+                    <Typography>
+                      پروژه های بازسازی تخریبی ({projectsCount[1]})
                     </Typography>
                     <div className="divider"></div>
                   </Link>
                   <Link to='/Projects/completed' className="item">
-                    <Typography
-                        onClick={() => setCurrentTypeId(3)}
-                    >
-                      پروژه های ساخته شده
+                    <Typography>
+                      پروژه های ساخته شده ({projectsCount[2]})
                     </Typography>
                     <div className="divider"></div>
                   </Link>
                   <Link to='/Projects/under-construction' className="item">
-                    <Typography
-                        onClick={() => setCurrentTypeId(4)}
-                    >
-                      پروژه های در حال انجام
+                    <Typography>
+                      پروژه های در حال انجام ({projectsCount[3]})
                     </Typography>
-                    <div className="divider"></div>
                   </Link>
 
 
 
                 </div>
+                <div style={{marginBottom: '2em'}}></div>
               </Grid>
             </Hidden>
           </Grid>

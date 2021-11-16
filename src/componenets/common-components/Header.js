@@ -12,6 +12,9 @@ export default function Header() {
       <Hidden mdUp>
         <AppBarMenu />
       </Hidden>
+      <Hidden lgUp>
+        <NavBar/>
+      </Hidden>
       <Hidden mdDown>
         <NavBar />
       </Hidden>
