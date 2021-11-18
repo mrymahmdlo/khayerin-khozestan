@@ -160,11 +160,7 @@ export default function NewsPage() {
 
   return (
     <>
-      <Grid className={classes.header} xs={12}>
-        <Typography className={classes.headertext} variant="h3" component="h3">
-          اخبار و اطلاعیه ها
-        </Typography>
-      </Grid>
+      <h1 className='appr-topic'>اخبار و اطلاعیه ها</h1>
       {data ? (
         <div>
           {data ? (
