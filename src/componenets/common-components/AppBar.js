@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import "./header.css";
 import Logo from "../../assets/images/khayerin-logo.png";
-import { Divider } from "@material-ui/core";
+import { Divider, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -173,7 +173,10 @@ export default function AppBarMenu(){
             className="app-bar"
             style={{ width: "100%" }}
           >
-            <img className="media" src={Logo} alt="khayerin logo" />
+            <Link to={`/`} >
+              <img className="media" src={Logo} alt="khayerin logo" />
+            </Link>
+            <Typography component="h5" variant="h5">خیرین مدرسه ساز خوزستان</Typography>
             <IconButton
               onClick={toggleDrawer(true)}
               edge="start"

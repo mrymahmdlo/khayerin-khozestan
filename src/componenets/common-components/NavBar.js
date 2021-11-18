@@ -214,7 +214,9 @@ export default function NavBar(){
                 خانه
               </Button>
             </Link>
+            <Link to={`/`} >
             <img className="media" src={Logo} alt="khayerin logo" />
+            </Link>
           </div>
         </div>
       </>

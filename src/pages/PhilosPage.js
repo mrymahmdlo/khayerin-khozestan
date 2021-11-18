@@ -99,11 +99,7 @@ export default function AllPhilos() {
 
     return (
         <>
-        <Grid className={classes.header} xs={12}>
-        <Typography className={classes.headertext} variant="h3" component="h3">
-          خیرین مدرسه ساز استان خوزستان
-        </Typography>
-        </Grid>
+        <h1 className='appr-topic'>خیرین مدرسه ساز خوزستان</h1>
         { data ?  (
         <Grid className={classes.content} container>
             {data?.philanthropists.map((item)=>(

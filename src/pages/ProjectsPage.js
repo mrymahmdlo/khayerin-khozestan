@@ -29,7 +29,7 @@ const base = "http://charity.mykanoon.ir/api";
 
 const useStyles = makeStyles(() => ({
   content: {
-    marginTop: "-2em",
+    marginTop: "1em",
     padding: "0px 40px",
     "@media (max-width: 800px)": {
       padding: "2em 0em 5em",
@@ -223,8 +223,6 @@ const ProjectComponent = ({
           <Typography className="title">{title}</Typography>
         </Link>
 
-        <Typography className="text">{/* {description} */}</Typography>
-
         <div className="text">{cityName}</div>
 
         <div className="text">
@@ -290,13 +288,9 @@ export default function AllProjects() {
 
   return (
     <>
-      <Grid className={classes.header} xs={12}>
-        <Typography className={classes.headertext} variant="h3" component="h3">
-          پروژه های ساخت مدرسه
-        </Typography>
-      </Grid>
+      <h1 className='appr-topic'>پروژه های ساخت مدرسه</h1>
       {data ? (
-        <div style={{ marginTop: "90px" }}>
+        <div>
           <Grid
             className={classes.content}
             container
