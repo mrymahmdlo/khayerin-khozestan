@@ -16,7 +16,11 @@ const useStyles = makeStyles(() => ({
         textAlign: "center !important",
         marginBottom: 50,
         fontWeight: "bold",
-        color: "#343A40"
+        color: "#343A40",
+        transition: "all 0.3s ease-out",
+        "&:hover" : {
+          color: "#09CC7F !important"
+        }
     },
     media: {
         width: "95%",
@@ -47,7 +51,6 @@ const responsive = {
 
 export default function ProjectCarousel ({projectsData}) {
     const classes = useStyles();
-    console.log(projectsData.data);
 
     return (
         <Grid container style={{marginBlock: 80,backgroundColor: "#f8fcff"}}>

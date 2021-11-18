@@ -10,6 +10,7 @@ import { create } from "jss";
 import rtl from "jss-rtl";
 import Searchbar from "../componenets/common-components/Searchbar";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
+import Hero2 from "../assets/images/hero2.png";
 import {
   withStyles,
   createStyles,
@@ -20,12 +21,14 @@ import {
   ThemeProvider,
   jssPreset,
 } from "@material-ui/core";
+
 const theme = createTheme({
   direction: "rtl",
 });
+
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
 
-const StyledInput = withStyles((theme) =>
+const StyledInput = withStyles(() =>
   createStyles({
     root: {},
     input: {
@@ -39,7 +42,6 @@ const StyledInput = withStyles((theme) =>
         backgroundColor: "#fff",
         border: `1px solid #fff !important`,
       },
-      //   paddingBottom: 12,
     },
   })
 )(InputBase);
@@ -53,7 +55,6 @@ const useStyles = makeStyles(() => ({
   },
   item: {
     height: "auto",
-    // padding:'10px 20px'
     margin: "0px 10px",
   },
   image: {
@@ -101,6 +102,19 @@ const useStyles = makeStyles(() => ({
       },
     },
   },
+  headertext: {
+    color: "#072366",
+    fontWeight: "bold",
+    wordSpacing: "-1.2px",
+    paddingBlock: "80px !important",
+    "@media (max-width: 600px)": {
+      fontSize: "2em !important",
+    },
+  },
+  header: {
+    backgroundImage: `url(${Hero2})`,
+    height: 250,
+  },
 }));
 
 const NewsComponent = ({ imgSrc, id, item }) => {
@@ -146,21 +160,13 @@ export default function NewsPage() {
     GetData(`Tehran/PostGroup`).then((res) => setData(res));
   }, []);
 
-  const [news, setNews] = useState(null);
-  useEffect(() => {
-    GetData(`Tehran/Home`).then((res) => setNews(res));
-  }, []);
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
-  const indexOfLastPage = itemsPerPage * currentPage;
-  const indexOfFirstPage = indexOfLastPage - itemsPerPage;
-  const allItems = data?.posts.length;
-  const currentItems = data?.posts.slice(indexOfFirstPage, indexOfLastPage);
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
   return (
     <>
+      <Grid className={classes.header} xs={12}>
+        <Typography className={classes.headertext} variant="h3" component="h3">
+          اخبار و اطلاعیه ها
+        </Typography>
+      </Grid>
       {data ? (
         <div>
           {data ? (
@@ -232,7 +238,7 @@ export default function NewsPage() {
                 </Hidden>
               </Grid> */}
               <Grid item xs={12} md={7} className={classes.item}>
-                {currentItems.map((item) => (
+                { data?.posts.slice(0,10).map((item) => (
                   <Grid>
                     <NewsComponent
                       imgSrc={

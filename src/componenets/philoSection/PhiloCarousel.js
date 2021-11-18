@@ -1,53 +1,98 @@
 import { React } from "react";
-import PhiloCard from './PhiloCard.js';
+import PhiloCard from "./PhiloCard.js";
+import { Link } from "react-router-dom";
 import Carousel from "react-multi-carousel";
-import PersonIcon from '@material-ui/icons/Person';
-import { createTheme, ThemeProvider } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
-import '../common-components/carouselStyle.css';
+import "../common-components/carouselStyle.css";
+import { Grid, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 
-const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 5
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 3
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1
+const useStyles = makeStyles(() => ({
+  title: {
+    textAlign: "right",
+    color: "#072366",
+    fontWeight: "bolder",
+    marginBottom: 30,
+  },
+  caption: {
+    textAlign: "center !important",
+    marginBottom: 50,
+    fontWeight: "bold",
+    color: "#343A40",
+    transition: 'all 0.3s ease-out',
+    "&:hover" : {
+      color: "#09CC7F !important"
     }
-};
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#00303F',
-    },
-    secondary: {
-      main: '#16697A',
+  },
+  media: {
+    width: "95%",
+    height: "250px",
+    padding: 2,
+    border: "1px solid #dee2e6",
+    "@media (max-width: 600px)": {
+      height: "250px",
     },
   },
-});
+}));
 
+const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 4,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
 
-export default function PhiloCarousel(philosData) {
+export default function PhiloCarousel(philoData) {
+  const classes = useStyles();
+  console.log(philoData.philoData.data);
 
-  return(
-      <ThemeProvider theme={theme}>
-        <div className='add-title' style={{marginBottom: '0px !important'}}>
-            <Typography className='title-text' variant="h5" component="h3"> 
-              خیرین
-            </Typography>
-            <PersonIcon fontSize='large' color='primary' />
-        </div>
-        <Carousel responsive={responsive} >
-            {philosData.philosData[0].data.map(item => (
-                <PhiloCard key={item.id} id={item.id} philoData={item} key={item.id} />
+  return (
+    <>
+      <Grid container style={{ marginBlock: 80, backgroundColor: "#f8fcff" }}>
+        <Grid item xs={12}>
+          <Typography component="h6" variant="h6" className={classes.title}>
+            خیرین مدرسه ساز استان خوزستان
+          </Typography>
+          <Carousel
+            responsive={responsive}
+            swipeable={true}
+            draggable={true}
+            autoPlay={true}
+            infinite={true}
+            autoPlaySpeed={3000}
+            transitionDuration={1000}
+            arrows={false}
+            showDots={true}
+          >
+            {philoData?.philoData?.data.map((item) => (
+              <>
+                <img
+                  key={item.id}
+                  className={classes.media}
+                  alt={item.firstName}
+                  src={"http://charity.mykanoon.ir/File/Get/" + item.imageId}
+                />
+                <Link to={`/Philanthropists/${item.id}`} style={{ width: "100%" }}>
+                  <Typography
+                    component="h5"
+                    variant="h5"
+                    className={classes.caption}
+                  >
+                    {`${item?.firstName} ${item?.lastName ? item?.lastName : ''}`}
+                  </Typography>
+                </Link>
+              </>
             ))}
-        </Carousel>
-      </ThemeProvider>
-  )
+          </Carousel>
+        </Grid>
+      </Grid>
+    </>
+  );
 }
