@@ -33,7 +33,6 @@ const StyledInput = withStyles((theme) =>
         backgroundColor: "#fff",
         border: `1px solid #fff !important`,
       },
-      //   paddingBottom: 12,
     },
   })
 )(InputBase);

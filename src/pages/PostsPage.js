@@ -4,10 +4,9 @@ import { CircularProgress, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { GetData } from "../services/APIengine";
 import { Link } from "react-router-dom";
-import SearchIcon from "@material-ui/icons/Search";
-import Button from "@material-ui/core/Button";
 import { create } from "jss";
 import rtl from "jss-rtl";
+import Searchbar from "../componenets/common-components/Searchbar";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 import Hero2 from "../assets/images/hero2.png";
 import {
@@ -173,69 +172,12 @@ export default function NewsPage() {
               container
               justifyContent="space-between"
               direction="row-reverse"
-              className={classes.root}
+              cl
+              assName={classes.root}
             >
-              <Grid md={4} item container direction="column">
-                <Hidden mdDown>
-                  <div
-                    style={{
-                      padding: "30px",
-                      backgroundColor: "#f6f6f6",
-                      display: "flex",
-                      flexDirection: "column",
-                      width: "100%",
-                      alignItems: "center",
-                    }}
-                  >
-                    <div
-                      style={{
-                        display: "flex",
-                        width: "100%",
-                        justifyContent: "center",
-                        direction: "rtl",
-                      }}
-                    >
-                      <Button
-                        style={{
-                          backgroundColor: "#09cc7f",
-                        }}
-                        disabled
-                      >
-                        <SearchIcon style={{ color: "#fff" }} />
-                      </Button>
-                      <ThemeProvider theme={theme}>
-                        <StylesProvider jss={jss}>
-                          <StyledInput
-                            placeholder="جست و جو"
-                            style={{
-                              width: "100%",
-                            }}
-                          />
-                        </StylesProvider>
-                      </ThemeProvider>
-                    </div>
-                    <div
-                      style={{
-                        width: "100%",
-                        marginTop: "15px",
-                      }}
-                    >
-                      <Button
-                        style={{
-                          backgroundColor: "#09cc7f",
-                          width: "100%",
-                          color: "#fff",
-                          padding: "10px",
-                        }}
-                      >
-                        جست و جو
-                      </Button>
-                    </div>
-                  </div>
-                </Hidden>
-              </Grid>
+              <Searchbar />
               <Grid item xs={12} md={7} className={classes.item}>
-                { data?.posts.slice(0,10).map((item) => (
+                {data?.posts.slice(0, 10).map((item) => (
                   <Grid>
                     <NewsComponent
                       imgSrc={
