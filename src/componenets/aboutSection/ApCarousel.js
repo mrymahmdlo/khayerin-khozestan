@@ -29,7 +29,7 @@ export default function ApCarousel() {
                 موسسه خیرین مدرسه ساز خوزستان
             </Typography>
             <Typography component="p" className="blueText">
-              <Link to="/Appreciations">
+              <Link to="/Appreciations" className="blueText">
                 افتخارات و تقدیرنامه ها
               </Link>
             </Typography>
