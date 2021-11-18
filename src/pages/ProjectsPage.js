@@ -15,7 +15,6 @@ import {
 import Grid from "@material-ui/core/Grid";
 import { CircularProgress } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import SearchIcon from "@material-ui/icons/Search";
 import { create } from "jss";
 import rtl from "jss-rtl";
 import ToFarsiNumber from "../componenets/common-components/Converter";
@@ -23,6 +22,8 @@ import NumberCreator from "../componenets/common-components/NumberCreator";
 import PersonIcon from "@material-ui/icons/Person";
 import { useParams } from "react-router";
 import Hero2 from "../assets/images/hero2.png";
+import Searchbar from "../componenets/common-components/Searchbar";
+
 
 const base = "http://charity.mykanoon.ir/api";
 
@@ -317,94 +318,8 @@ export default function AllProjects() {
               ))}
             </Grid>
 
-            <Hidden mdDown>
-              <Grid md={4} item container direction="column">
-                <div
-                  style={{
-                    padding: "30px",
-                    backgroundColor: "#f6f6f6",
-                    display: "flex",
-                    flexDirection: "column",
-                    width: "100%",
-                    alignItems: "center",
-                  }}
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      width: "100%",
-                      justifyContent: "center",
-                      direction: "rtl",
-                    }}
-                  >
-                    <Button
-                      style={{
-                        backgroundColor: "#09cc7f",
-                      }}
-                    >
-                      <SearchIcon style={{ color: "#fff" }} />
-                    </Button>
-                    <ThemeProvider theme={theme}>
-                      <StylesProvider jss={jss}>
-                        <StyledInput
-                          placeholder="جست و جو"
-                          style={{
-                            width: "100%",
-                          }}
-                        />
-                      </StylesProvider>
-                    </ThemeProvider>
-                  </div>
-                  <div
-                    style={{
-                      width: "100%",
-                      marginTop: "15px",
-                    }}
-                  >
-                    <Button
-                      style={{
-                        backgroundColor: "#09cc7f",
-                        width: "100%",
-                        color: "#fff",
-                        padding: "10px",
-                      }}
-                    >
-                      جست و جو
-                    </Button>
-                  </div>
-                </div>
-
-                <div className={classes.category}>
-                  <Typography className="title">دسته بندی پروژه ها</Typography>
-                  <div className="divider"></div>
-
-                  <Link to="/Projects/half-built" className="item">
-                    <Typography>
-                      پروژه های نیمه تمام ({projectsCount[0]})
-                    </Typography>
-                    <div className="divider"></div>
-                  </Link>
-                  <Link to="/Projects/overhauled" className="item">
-                    <Typography>
-                      پروژه های بازسازی تخریبی ({projectsCount[1]})
-                    </Typography>
-                    <div className="divider"></div>
-                  </Link>
-                  <Link to="/Projects/completed" className="item">
-                    <Typography>
-                      پروژه های ساخته شده ({projectsCount[2]})
-                    </Typography>
-                    <div className="divider"></div>
-                  </Link>
-                  <Link to="/Projects/under-construction" className="item">
-                    <Typography>
-                      پروژه های در حال انجام ({projectsCount[3]})
-                    </Typography>
-                  </Link>
-                </div>
-                <div style={{ marginBottom: "2em" }}></div>
-              </Grid>
-            </Hidden>
+            <Searchbar />
+            
           </Grid>
         </div>
       ) : (
