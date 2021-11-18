@@ -22,7 +22,6 @@ const responsive = {
 
 export default function ApCarousel() {
     const {images} = ImageObj ;
-    console.log(images);
     return(
         <Grid container style={{marginBlock: 70,backgroundColor: "#f8fcff"}}>
             <Grid item xs={12}>

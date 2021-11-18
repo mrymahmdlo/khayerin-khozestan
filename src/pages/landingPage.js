@@ -9,6 +9,7 @@ import { CircularProgress } from '@material-ui/core';
 import Additional from '../componenets/StaticSection/Static';
 import HelpNav from '../componenets/common-components/HelpNav';
 import { GetData } from "../services/APIengine";
+import PhiloCarousel from '../componenets/philoSection/PhiloCarousel';
 
 export default function LandingPage() {
 
@@ -31,6 +32,7 @@ export default function LandingPage() {
                 <PostCarousel newsData={data.postSection.posts} />
                 <AboutCard />
                 <HelpNav />
+                <PhiloCarousel philoData={data.philanthropistSection[0]} />
                 <ProjectsChart projectsData={data.projectSection} />
                 <ProjectCarousel projectsData={data.projectSection[0]} />
                 <Additional staticData={data2} />

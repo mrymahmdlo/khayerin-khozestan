@@ -21,14 +21,14 @@ import rtl from "jss-rtl";
 import ToFarsiNumber from "../componenets/common-components/Converter";
 import NumberCreator from "../componenets/common-components/NumberCreator";
 import PersonIcon from "@material-ui/icons/Person";
-import {useParams} from 'react-router';
+import { useParams } from "react-router";
 import Hero2 from "../assets/images/hero2.png";
 
 const base = "http://charity.mykanoon.ir/api";
 
 const useStyles = makeStyles(() => ({
   content: {
-    marginTop: '-2em',
+    marginTop: "-2em",
     padding: "0px 40px",
     "@media (max-width: 800px)": {
       padding: "2em 0em 5em",
@@ -145,7 +145,7 @@ const useStyles = makeStyles(() => ({
     height: 250,
   },
   headertext: {
-    color: '#072366',
+    color: "#072366",
     fontWeight: "bold",
     wordSpacing: "-1.2px",
     paddingBlock: "80px !important",
@@ -157,7 +157,7 @@ const useStyles = makeStyles(() => ({
 
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
 
-const StyledInput = withStyles((theme) =>
+const StyledInput = withStyles(() =>
   createStyles({
     root: {},
     input: {
@@ -171,7 +171,6 @@ const StyledInput = withStyles((theme) =>
         backgroundColor: "#fff",
         border: `1px solid #fff !important`,
       },
-      //   paddingBottom: 12,
     },
   })
 )(InputBase);
@@ -255,35 +254,45 @@ export default function AllProjects() {
   const classes = useStyles();
   const [data, setData] = useState();
   useEffect(() => {
-    fetch(base + "/Tehran/ProjectGroup").then((response) =>
-      response.json().then((response) => setData(response.projects))
-    ).catch((err) => console.log(err));
+    fetch(base + "/Tehran/ProjectGroup")
+      .then((response) =>
+        response.json().then((response) => setData(response.projects))
+      )
+      .catch((err) => console.log(err));
   }, []);
 
   const theme = createTheme({
     direction: "rtl",
   });
 
-  const {status}=useParams();
-  let temp=data;
+  const { status } = useParams();
+  let temp = data;
   let type;
-  status==='half-built' ? type=1 :
-      (status==='overhauled' ? type=2 :
-          (status==='under-construction' ? type=3 :
-              type=4));
-  temp=temp?.filter(item=>item?.typeId===type)
-  let projectsCount=[0,0,0,0];
-  data?.map(item=>(
-      item.typeId===1 ? projectsCount[0]+=1 :
-          (item.typeId===2 ? projectsCount[1]+=1 :
-              (item.typeId===4 ? projectsCount[2]+=1 :
-                  projectsCount[3]+=1))
-  ))
+  status === "half-built"
+    ? (type = 1)
+    : status === "overhauled"
+    ? (type = 2)
+    : status === "under-construction"
+    ? (type = 3)
+    : (type = 4);
+  temp = temp?.filter((item) => item?.typeId === type);
+  let projectsCount = [0, 0, 0, 0];
+  data?.map((item) =>
+    item.typeId === 1
+      ? (projectsCount[0] += 1)
+      : item.typeId === 2
+      ? (projectsCount[1] += 1)
+      : item.typeId === 4
+      ? (projectsCount[2] += 1)
+      : (projectsCount[3] += 1)
+  );
 
   return (
     <>
       <Grid className={classes.header} xs={12}>
-        <Typography className={classes.headertext} variant="h3" component="h3">پروژه های ساخت مدرسه</Typography>
+        <Typography className={classes.headertext} variant="h3" component="h3">
+          پروژه های ساخت مدرسه
+        </Typography>
       </Grid>
       {data ? (
         <div style={{ marginTop: "90px" }}>
@@ -332,7 +341,6 @@ export default function AllProjects() {
                       style={{
                         backgroundColor: "#09cc7f",
                       }}
-
                     >
                       <SearchIcon style={{ color: "#fff" }} />
                     </Button>
@@ -370,34 +378,31 @@ export default function AllProjects() {
                   <Typography className="title">دسته بندی پروژه ها</Typography>
                   <div className="divider"></div>
 
-                  <Link to='/Projects/half-built' className="item">
+                  <Link to="/Projects/half-built" className="item">
                     <Typography>
                       پروژه های نیمه تمام ({projectsCount[0]})
                     </Typography>
                     <div className="divider"></div>
                   </Link>
-                  <Link to='/Projects/overhauled' className="item">
+                  <Link to="/Projects/overhauled" className="item">
                     <Typography>
                       پروژه های بازسازی تخریبی ({projectsCount[1]})
                     </Typography>
                     <div className="divider"></div>
                   </Link>
-                  <Link to='/Projects/completed' className="item">
+                  <Link to="/Projects/completed" className="item">
                     <Typography>
                       پروژه های ساخته شده ({projectsCount[2]})
                     </Typography>
                     <div className="divider"></div>
                   </Link>
-                  <Link to='/Projects/under-construction' className="item">
+                  <Link to="/Projects/under-construction" className="item">
                     <Typography>
                       پروژه های در حال انجام ({projectsCount[3]})
                     </Typography>
                   </Link>
-
-
-
                 </div>
-                <div style={{marginBottom: '2em'}}></div>
+                <div style={{ marginBottom: "2em" }}></div>
               </Grid>
             </Hidden>
           </Grid>

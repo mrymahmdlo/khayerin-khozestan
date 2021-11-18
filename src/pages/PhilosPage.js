@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {makeStyles} from "@material-ui/core";
-import Grid from "@material-ui/core/Grid";
+import {makeStyles, Typography, Grid} from "@material-ui/core";
 import {Link} from "react-router-dom";
 import ToFarsiNumber from '../componenets/common-components/Converter';
 import NumberCreator from "../componenets/common-components/NumberCreator";
@@ -8,6 +7,7 @@ import { CircularProgress } from '@material-ui/core';
 import './PhilosPage.css';
 import banknote from '../assets/images/banknotes-icon.png';
 import location from '../assets/images/location-icon.png';
+import Hero2 from "../assets/images/hero2.png";
 
 const base='http://charity.mykanoon.ir/api';
 
@@ -71,7 +71,20 @@ const useStyles=makeStyles(()=>({
             color: '#48dd8e',
             transform: 'scaleX(1)'
         }
-    }
+    },
+    headertext: {
+        color: "#072366",
+        fontWeight: "bold",
+        wordSpacing: "-1.2px",
+        paddingBlock: "80px !important",
+        "@media (max-width: 600px)": {
+          fontSize: "2em !important",
+        },
+      },
+    header: {
+        backgroundImage: `url(${Hero2})`,
+        height: 250,
+    },
 }));
 
 export default function AllPhilos() {
@@ -86,6 +99,11 @@ export default function AllPhilos() {
 
     return (
         <>
+        <Grid className={classes.header} xs={12}>
+        <Typography className={classes.headertext} variant="h3" component="h3">
+          خیرین مدرسه ساز استان خوزستان
+        </Typography>
+        </Grid>
         { data ?  (
         <Grid className={classes.content} container>
             {data?.philanthropists.map((item)=>(
