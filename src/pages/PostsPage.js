@@ -8,6 +8,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import Button from "@material-ui/core/Button";
 import { create } from "jss";
 import rtl from "jss-rtl";
+import Searchbar from "../componenets/common-components/Searchbar";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 import {
   withStyles,
@@ -167,9 +168,11 @@ export default function NewsPage() {
               container
               justifyContent="space-between"
               direction="row-reverse"
-              className={classes.root}
+              cl
+              assName={classes.root}
             >
-              <Grid md={4} item container direction="column">
+              <Searchbar />
+              {/* <Grid md={4} item container direction="column">
                 <Hidden mdDown>
                   <div
                     style={{
@@ -227,7 +230,7 @@ export default function NewsPage() {
                     </div>
                   </div>
                 </Hidden>
-              </Grid>
+              </Grid> */}
               <Grid item xs={12} md={7} className={classes.item}>
                 {currentItems.map((item) => (
                   <Grid>
