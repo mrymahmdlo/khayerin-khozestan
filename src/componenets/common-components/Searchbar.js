@@ -48,6 +48,7 @@ export default function Searchbar() {
             display: "flex",
             flexDirection: "column",
             width: "100%",
+            marginTop: "3em",
             alignItems: "center",
           }}
         >

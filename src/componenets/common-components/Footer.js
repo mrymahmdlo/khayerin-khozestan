@@ -4,7 +4,6 @@ import Typography from "@material-ui/core/Typography";
 import Divider from '@material-ui/core/Divider';
 import CallIcon from '@material-ui/icons/Call';
 import { makeStyles } from '@material-ui/core/styles';
-import Logo from '../../assets/images/khayerin-logo.png';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import EmailIcon from '@material-ui/icons/Email';
 import './footer.css';

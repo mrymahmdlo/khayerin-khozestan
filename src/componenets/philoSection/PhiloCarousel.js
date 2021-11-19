@@ -5,7 +5,6 @@ import Carousel from "react-multi-carousel";
 import "../common-components/carouselStyle.css";
 import { Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
-
 const useStyles = makeStyles(() => ({
   title: {
     textAlign: "right",
