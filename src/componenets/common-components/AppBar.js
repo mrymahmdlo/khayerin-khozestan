@@ -15,6 +15,11 @@ import Collapse from "@material-ui/core/Collapse";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import { Link } from "react-router-dom";
+import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
+import ApartmentIcon from '@material-ui/icons/Apartment';
+import InfoRoundedIcon from '@material-ui/icons/InfoRounded';
+import PersonRoundedIcon from '@material-ui/icons/PersonRounded';
+import ListAltRoundedIcon from '@material-ui/icons/ListAltRounded';
 
 const useStyles = makeStyles({
     Button: {
@@ -134,16 +139,18 @@ export default function AppBarMenu(){
     setOpen2(!open2);
   };
 
-  const MenuItems=menuItems?.items?.map((item)=>(
+  const MenuItems=menuItems?.items?.map((item, index)=>(
       <Link to={item.path} className="link" style={{ width: "100%" }}>
-        <ListItem>
+        <ListItem style={{direction:' rtl', color: '#000'}}>
+          {index===0 ? <HomeRoundedIcon/> : (index===1 ? <PersonRoundedIcon/> : <ListAltRoundedIcon/>)}
           <ListItemText onClick={toggleDrawer(false)} className={classes.list__item} primary={item.content} />
         </ListItem>
       </Link>
   ))
   const SubMenuTitles=subMenuTitle?.titles?.map((item, index)=>(
-      <div className="link" style={{ width: "100%" }}>
+      <div className="link" style={{ width: "100%", direction: 'rtl' }}>
         <ListItem button onClick={index===0 ? handleClick1 : handleClick2} className={classes.list__item}>
+          {index===0 ? <ApartmentIcon/> : <InfoRoundedIcon/>}
           <ListItemText className={classes.list__item} primary={item.content}/>
           {(index===0 ? open1 : open2) ? <ExpandLess /> : <ExpandMore />}
         </ListItem>
@@ -153,11 +160,7 @@ export default function AppBarMenu(){
       <Collapse in={index<4 ? open1 : open2} timeout="auto">
         <List component="div" disablePadding>
           <ListItem button sx={{ pl: 4 }}>
-            <Link
-                to={item.path}
-                className="link"
-                style={{ width: "100%",paddingRight: "1em" }}
-            >
+            <Link to={item.path} className="link" style={{ width: "100%",paddingRight: "1em" }}>
               <ListItemText onClick={toggleDrawer(false)} className={classes.list__item} primary={item.content} />
             </Link>
           </ListItem>
