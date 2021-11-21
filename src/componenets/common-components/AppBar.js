@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import "./header.css";
 import Logo from "../../assets/images/khayerin-logo.png";
-import { Divider, Typography } from "@material-ui/core";
+import { Divider } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -11,6 +11,9 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import Collapse from "@material-ui/core/Collapse";
+import ExpandLess from "@material-ui/icons/ExpandLess";
+import ExpandMore from '@material-ui/icons/ExpandMore';
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
@@ -45,10 +48,66 @@ const useStyles = makeStyles({
       textAlign: "right",
       color: "#000 !important",
       "&>span": {
-        fontSize: "1.2rem !important",
+        fontSize: "1.2rem",
       },
     },
   });
+
+const menuItems={
+  items: [
+    {
+      path: '/',
+      content: 'خانه',
+    },
+    {
+      path: '/Philanthropists',
+      content: 'خیرین',
+    },
+    {
+      path: '/News',
+      content: 'اخبار و اطلاعیه ها',
+    }
+
+  ]
+}
+const subMenuTitle={
+  titles: [
+    {
+      content: 'پروژه ها',
+    },
+    {
+      content: 'دربارۀ خیرین',
+    }
+  ]
+}
+const subMenuItems={
+  items: [
+    {
+      path: '/Projects/half-built',
+      content: 'پروژه های نیمه تمام -',
+    },
+    {
+      path: '/Projects/overhauled',
+      content: 'پروژه های بازسازی تخریبی -',
+    },
+    {
+      path: '/Projects/completed',
+      content: 'پروژه های ساخته شده -',
+    },
+    {
+      path: '/Projects/under-construction',
+      content: 'پروژه های در حال انجام -',
+    },
+    {
+      path: 'About',
+      content: 'تاریخچۀ موسسه -',
+    },
+    {
+      path: '/Appreciations',
+      content: 'تقدیرنامه ها -',
+    }
+  ]
+}
 
 export default function AppBarMenu(){
     const classes = useStyles();
@@ -66,102 +125,65 @@ export default function AppBarMenu(){
     setState(open);
     };
 
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
+  const handleClick1 = () => {
+    setOpen1(!open1);
+  };
+  const handleClick2 = () => {
+    setOpen2(!open2);
+  };
+
+  const MenuItems=menuItems?.items?.map((item)=>(
+      <Link to={item.path} className="link" style={{ width: "100%" }}>
+        <ListItem>
+          <ListItemText onClick={toggleDrawer(false)} className={classes.list__item} primary={item.content} />
+        </ListItem>
+      </Link>
+  ))
+  const SubMenuTitles=subMenuTitle?.titles?.map((item, index)=>(
+      <div className="link" style={{ width: "100%" }}>
+        <ListItem button onClick={index===0 ? handleClick1 : handleClick2} className={classes.list__item}>
+          <ListItemText className={classes.list__item} primary={item.content}/>
+          {(index===0 ? open1 : open2) ? <ExpandLess /> : <ExpandMore />}
+        </ListItem>
+      </div>
+  ))
+  const SubMenuItems=subMenuItems?.items?.map((item, index)=>(
+      <Collapse in={index<4 ? open1 : open2} timeout="auto">
+        <List component="div" disablePadding>
+          <ListItem button sx={{ pl: 4 }}>
+            <Link
+                to={item.path}
+                className="link"
+                style={{ width: "100%",paddingRight: "1em" }}
+            >
+              <ListItemText onClick={toggleDrawer(false)} className={classes.list__item} primary={item.content} />
+            </Link>
+          </ListItem>
+        </List>
+      </Collapse>
+  ))
+
     const list = () => (
 
         <div
           className={classes.list}
           role="presentation"
-          onClick={toggleDrawer(false)}
           onKeyDown={toggleDrawer(false)}
         >
           <List>
-            <Link to={`/`} className="link" style={{ width: "100%" }}>
-              <ListItem>
-                <ListItemText className={classes.list__item} primary="خانه" />
-              </ListItem>
-            </Link>
+            {MenuItems[0]}
             <Divider variant="middle" />
-            <div className="link" style={{ width: "100%" }}>
-              <ListItem>
-                <ListItemText className={classes.list__item} primary="پروژه ها" />
-              </ListItem>
-            </div>
-              <ListItem>
-                <Link
-                    to={`/Projects/half-built`}
-                    className="link"
-                    style={{ width: "100%",paddingRight: "1em" }}
-                >
-                  <ListItemText className={classes.list__item} primary="پروژه های نیمه تمام -" />
-                </Link>
-              </ListItem>
-              <ListItem>
-
-                <Link
-                    to={`/Projects/overhauled`}
-                    className="link"
-                    style={{ width: "100%",paddingRight: "1em" }}
-                >
-                  <ListItemText className={classes.list__item} primary="پروژه های بازسازی تخریبی -" />
-                </Link>
-              </ListItem>
-              <ListItem>
-                <Link
-                    to={`/Projects/completed`}
-                    className="link"
-                    style={{ width: "100%",paddingRight: "1em" }}
-                >
-                  <ListItemText className={classes.list__item} primary="پروژه های ساخته شده -" />
-                </Link>
-              </ListItem>
-              <ListItem>
-                <Link
-                    to={`/Projects/under-construction`}
-                    className="link"
-                    style={{ width: "100%",paddingRight: "1em" }}
-                >
-                  <ListItemText className={classes.list__item} primary="پروژه های در حال انجام -" />
-                </Link>
-              </ListItem>
+            {SubMenuTitles[0]}
+            {SubMenuItems.slice(0,4)}
             <Divider variant="middle" />
-            <div
-              className="link"
-              style={{ width: "100%" }}
-            >
-              <ListItem>
-                <ListItemText className={classes.list__item} primary="دربارۀ خیرین" />
-              </ListItem>
-            </div>
-              <ListItem>
-                <Link
-                    to={`/About`}
-                    className="link"
-                    style={{ width: "100%",paddingRight: "1em" }}
-                >
-                  <ListItemText className={classes.list__item} primary="تاریخچۀ موسسه -" />
-                </Link>
-              </ListItem>
-              <ListItem>
-                <Link
-                    to={`/Appreciations`}
-                    className="link"
-                    style={{ width: "100%",paddingRight: "1em" }}
-                >
-                  <ListItemText className={classes.list__item} primary="تقدیرنامه ها -" />
-                </Link>
-              </ListItem>
+            {SubMenuTitles[1]}
+            {SubMenuItems.slice(4,6)}
             <Divider variant="middle" />
-            <Link to={`/Philanthropists`} className="link" style={{ width: "100%" }}>
-              <ListItem>
-                <ListItemText className={classes.list__item} primary="خیرین" />
-              </ListItem>
-            </Link>
+            {MenuItems[1]}
             <Divider variant="middle" />
-            <Link to={`/News`} className="link" style={{ width: "100%" }}>
-              <ListItem>
-                <ListItemText className={classes.list__item} primary="اخبار و اطلاعیه ها" />
-              </ListItem>
-            </Link>
+            {MenuItems[2]}
           </List>
         </div>
       );
@@ -176,7 +198,6 @@ export default function AppBarMenu(){
             <Link to={`/`} >
               <img className="media" src={Logo} alt="khayerin logo" />
             </Link>
-            <Typography component="h5" variant="h5">خیرین مدرسه ساز خوزستان</Typography>
             <IconButton
               onClick={toggleDrawer(true)}
               edge="start"
@@ -187,7 +208,7 @@ export default function AppBarMenu(){
             >
               <MenuIcon fontSize="large" />
             </IconButton>
-            <Drawer anchor="right" open={right} onClose={toggleDrawer(false)} >
+            <Drawer variant='temporary' anchor="right" open={right} onClose={toggleDrawer(false)} >
               {list()}
             </Drawer>
           </Toolbar>
