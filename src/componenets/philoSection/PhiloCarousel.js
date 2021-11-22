@@ -1,8 +1,7 @@
 import { React } from "react";
-import PhiloCard from "./PhiloCard.js";
 import { Link } from "react-router-dom";
 import Carousel from "react-multi-carousel";
-import "../common-components/carouselStyle.css";
+import "../common-components/CarouselStyle.css";
 import { Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 const useStyles = makeStyles(() => ({

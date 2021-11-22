@@ -13,46 +13,6 @@ import numbers from "../../assets/images/numbers-icon (1).png";
 const base = "http://charity.mykanoon.ir/api";
 
 const useStyles = makeStyles(() => ({
-  content: {
-    margin: "0 auto ",
-    padding: "2em 2em 5em",
-    backgroundColor: "#F5F4F4",
-    textAlign: "right",
-  },
-  pic: {
-    width: "45%",
-    minWidth: "30%",
-    minHeight: "30%",
-    maxWidth: "80%",
-    maxHeight: "80%",
-    borderRadius: "6px",
-    backgroundColor: "#fff",
-    transition: "all 0.5s",
-    "&:hover": {
-      width: "50%",
-    },
-  },
-  activityHistory: {
-    direction: "rtl",
-    textAlign: "justify",
-    textJustify: "inter-word",
-  },
-  project: {
-    display: "flex",
-    justifyContent: "flex-end",
-    alignItems: "center",
-    height: "6em",
-  },
-  projectPicDiv: {
-    width: "50%",
-    textAlign: "right",
-    alignSelf: "center",
-  },
-  icon: {
-    width: "20px",
-    marginBottom: "-5px",
-    marginLeft: "2px",
-  },
   button: {
     backgroundColor: "#48dd8e",
     width: "100%",
@@ -81,7 +41,7 @@ const PhiloDetails = () => {
   }, []);
 
   return (
-    <div className={classes.content}>
+    <div className='detail-content'>
       <div className="info-div">
         <h1 className="title">{`${data?.philanthropist?.firstName} ${
           data?.philanthropist?.lastName ? data?.philanthropist?.lastName : ""
@@ -89,11 +49,11 @@ const PhiloDetails = () => {
         <div className="info">
           <h3>
             <span>شهر : {data?.philanthropist?.cityName}</span>
-            <img src={location} alt="cityName" className={classes.icon} />
+            <img src={location} alt="cityName" className='detail-icon' />
           </h3>
           <h3>
             <span>تعداد پروژه ها : {data?.philanthropist?.projectCounts}</span>
-            <img src={numbers} alt="projectCounts" className={classes.icon} />
+            <img src={numbers} alt="projectCounts" className='detail-icon' />
           </h3>
           <h3>
             <span>
@@ -101,7 +61,7 @@ const PhiloDetails = () => {
               {ToFarsiNumber(NumberCreator(data?.philanthropist?.sparedFund))}{" "}
               تومان
             </span>
-            <img src={banknote} alt="sparedFund" className={classes.icon} />
+            <img src={banknote} alt="sparedFund" className='detail-icon' />
           </h3>
         </div>
       </div>
@@ -110,9 +70,9 @@ const PhiloDetails = () => {
           <img
             src={`http://charity.mykanoon.ir/File/Get/${data?.philanthropist?.imageId}`}
             alt="philoPic"
-            className={classes.pic}
+            className='detail-pic'
           />
-          <div className={classes.activityHistory}>
+          <div className='activity'>
             {data?.philanthropist?.charityActivitiesHistory}
           </div>
         </div>
@@ -131,8 +91,8 @@ const PhiloDetails = () => {
                     : `/UnderConstruction/${item.id}`
                 }
               >
-                <Button variant="contained" className={classes.button}>
-                  <div className={classes.project}>
+                <Button variant="contained" className='detail-button'>
+                  <div className='detail-projects'>
                     <div>
                       <h3>{item?.title}</h3>
                       <div>
@@ -141,7 +101,7 @@ const PhiloDetails = () => {
                         <span> تومان</span>
                       </div>
                     </div>
-                    <div className={classes.projectPicDiv}>
+                    <div className='project-pic-div'>
                       <img
                         src={`http://charity.mykanoon.ir/File/Get/${item?.imageIds}`}
                         alt="projectPic"
