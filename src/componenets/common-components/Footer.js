@@ -5,7 +5,7 @@ import Divider from '@material-ui/core/Divider';
 import CallIcon from '@material-ui/icons/Call';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import EmailIcon from '@material-ui/icons/Email';
-import './footer.css';
+import './Footer.css';
 
 export default function Footer() {
     return(
