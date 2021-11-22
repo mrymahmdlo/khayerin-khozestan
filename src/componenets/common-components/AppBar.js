@@ -28,29 +28,6 @@ import PersonRoundedIcon from '@material-ui/icons/PersonRounded';
 import ListAltRoundedIcon from '@material-ui/icons/ListAltRounded';
 
 const useStyles = makeStyles({
-    Button: {
-      display: "flex",
-      position: "relative",
-      height: "100%",
-      width: "auto",
-      "& > *": {
-        color: "#072366",
-        fontSize: "1.1rem",
-      },
-    },
-    buttonOnHover: {
-      "&:hover": {
-        color: "#20C679 !important",
-      },
-    },
-    button__overlay: {
-      position: "absolute",
-      backgroundColor: "#000",
-      opacity: 0,
-      height: "100%",
-      width: "100%",
-      transition: "opacity 0.5s",
-    },
     list: {
       width: '100%',
       padding: '0 1em',

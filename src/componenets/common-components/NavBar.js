@@ -1,7 +1,6 @@
 import { React, useState } from "react";
 import "./header.css";
 import Logo from "../../assets/images/khayerin-logo.png";
-import { makeStyles } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import ListItemText from "@material-ui/core/ListItemText";
 import { Link } from "react-router-dom";
@@ -9,45 +8,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 
-const useStyles = makeStyles({
-    Button: {
-      display: "flex",
-      position: "relative",
-      height: "100%",
-      width: "auto",
-      "& > *": {
-        color: "#072366",
-        fontSize: "1.1rem",
-      },
-    },
-    buttonOnHover: {
-      "&:hover": {
-        color: "#20C679 !important",
-      },
-    },
-    button__overlay: {
-      position: "absolute",
-      backgroundColor: "#000",
-      opacity: 0,
-      height: "100%",
-      width: "100%",
-      transition: "opacity 0.5s",
-    },
-    list: {
-      width: 200,
-    },
-    list__item: {
-      textAlign: "right",
-      color: "#000 !important",
-      "&>span": {
-        fontSize: "1.2rem !important",
-      },
-    },
-  });
-
 export default function NavBar(){
-    const classes = useStyles();
-
     const StyledMenu = withStyles({
         paper: {
           borderTop: "5px solid #20C679",
@@ -98,31 +59,31 @@ export default function NavBar(){
               <button className="btn1">
                 <span>حمایت از موسسه</span>
               </button>
-            <Link to={`/News`} className={`link ${classes.Button}`}>
+            <Link to={`/News`} className='link Button'>
               <Button
                 style={{ padding: "0 2vw" }}
-                className={classes.buttonOnHover}
+                className='button-on-hover'
               >
-                <div className={classes.button__overlay} />
+                <div className='button-overlay' />
                 اخبار و اطلاعیه ها
               </Button>
             </Link>
-            <Link to={`/Philanthropists`} className={`link ${classes.Button}`}>
+            <Link to={`/Philanthropists`} className='link Button'>
               <Button
                 style={{ padding: "0 2vw" }}
-                className={classes.buttonOnHover}
+                className='button-on-hover'
               >
-                <div className={classes.button__overlay} />
+                <div className='button-overlay' />
                 خیرین
               </Button>
             </Link>
-            <div className={`link ${classes.Button}`}>
+            <div className='link Button'>
               <Button
                 style={{ padding: "0 2vw" }}
-                className={classes.buttonOnHover}
+                className='button-on-hover'
               >
                 <div
-                  className={classes.button__overlay}
+                  className='button-overlay'
                   onClick={handleClick1}
                   aria-controls="customized-menu1"
                   aria-haspopup="true"
@@ -154,15 +115,15 @@ export default function NavBar(){
                 </Link>
               </StyledMenuItem>
             </StyledMenu>
-            <div className={`link ${classes.Button}`}>
+            <div className='link Button'>
               <Button
                 style={{ padding: "0 2vw" }}
-                className={classes.buttonOnHover}
+                className='button-on-hover'
                 aria-controls="customized-menu"
                 aria-haspopup="true"
                 onClick={handleClick}
               >
-                <div className={classes.button__overlay} />
+                <div className='button-overlay' />
                 پروژه ها
               </Button>
             </div>
@@ -205,12 +166,12 @@ export default function NavBar(){
                 </StyledMenuItem>
               </Link>
             </StyledMenu>
-            <Link to={`/`} className={`link ${classes.Button}`}>
+            <Link to={`/`} className='link Button'>
               <Button
                 style={{ padding: "0 2vw" }}
-                className={classes.buttonOnHover}
+                className='button-on-hover'
               >
-                <div className={classes.button__overlay} />
+                <div className='button-overlay' />
                 خانه
               </Button>
             </Link>
