@@ -82,18 +82,18 @@
 }
 .Button>*{
     color: #072366;
-    font-size: 1.1rem;
+    font-size: 1.1rem !important;
 }
 .button-on-hover:hover{
     color: #20C679 !important;
 }
 .button-overlay{
     position: absolute;
-    background-color: #000;
+    background-color: #000 !important;
     opacity: 0;
     height: 100%;
     width: 100%;
-    transition: opacity 0.5s;
+    transition: opacity 0.5s !important;
 }
 
 
