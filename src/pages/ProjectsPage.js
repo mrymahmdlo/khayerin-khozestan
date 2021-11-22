@@ -285,9 +285,12 @@ export default function AllProjects() {
       : (projectsCount[3] += 1)
   );
 
+  const pageTitles=['پروژه های نیمه تمام', 'پروژه های بازسازی تخریبی', 'پروژه های در حال انجام', 'پروژه های ساخته شده'];
+  const title=pageTitles[type-1];
+
   return (
     <>
-      <h1 className='appr-topic'>پروژه های ساخت مدرسه</h1>
+      <h1 className='appr-topic'>{title}</h1>
       {data ? (
         <div>
           <Grid
