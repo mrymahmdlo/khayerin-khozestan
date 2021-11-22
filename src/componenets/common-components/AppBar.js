@@ -17,7 +17,13 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import { Link } from "react-router-dom";
 import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 import ApartmentIcon from '@material-ui/icons/Apartment';
+import BatteryCharging50RoundedIcon from '@material-ui/icons/BatteryCharging50Rounded';
+import BuildRoundedIcon from '@material-ui/icons/BuildRounded';
+import BatteryChargingFullRoundedIcon from '@material-ui/icons/BatteryChargingFullRounded';
+import TimelineRoundedIcon from '@material-ui/icons/TimelineRounded';
 import InfoRoundedIcon from '@material-ui/icons/InfoRounded';
+import MenuBookRoundedIcon from '@material-ui/icons/MenuBookRounded';
+import StarsRoundedIcon from '@material-ui/icons/StarsRounded';
 import PersonRoundedIcon from '@material-ui/icons/PersonRounded';
 import ListAltRoundedIcon from '@material-ui/icons/ListAltRounded';
 
@@ -51,11 +57,17 @@ const useStyles = makeStyles({
     },
     list__item: {
       textAlign: "right",
-      color: "#000 !important",
+      color: "#000",
       "&>span": {
         fontSize: "1.2rem",
       },
     },
+    collapseItem:{
+      width: "100%",
+      paddingRight: "2em",
+      direction:' rtl',
+      color: '#000',
+    }
   });
 
 const menuItems={
@@ -89,30 +101,33 @@ const subMenuItems={
   items: [
     {
       path: '/Projects/half-built',
-      content: 'پروژه های نیمه تمام -',
+      content: 'پروژه های نیمه تمام',
     },
     {
       path: '/Projects/overhauled',
-      content: 'پروژه های بازسازی تخریبی -',
+      content: 'پروژه های بازسازی تخریبی',
     },
     {
       path: '/Projects/completed',
-      content: 'پروژه های ساخته شده -',
+      content: 'پروژه های ساخته شده',
     },
     {
       path: '/Projects/under-construction',
-      content: 'پروژه های در حال انجام -',
+      content: 'پروژه های در حال انجام',
     },
     {
-      path: 'About',
-      content: 'تاریخچۀ موسسه -',
+      path: '/About',
+      content: 'تاریخچۀ موسسه',
     },
     {
       path: '/Appreciations',
-      content: 'تقدیرنامه ها -',
+      content: 'تقدیرنامه ها',
     }
   ]
 }
+const subMenuIcons=[<BatteryCharging50RoundedIcon/>, <BuildRoundedIcon/>
+    , <BatteryChargingFullRoundedIcon/>, <TimelineRoundedIcon/>
+    , <MenuBookRoundedIcon/>, <StarsRoundedIcon/>]
 
 export default function AppBarMenu(){
     const classes = useStyles();
@@ -141,7 +156,7 @@ export default function AppBarMenu(){
 
   const MenuItems=menuItems?.items?.map((item, index)=>(
       <Link to={item.path} className="link" style={{ width: "100%" }}>
-        <ListItem style={{direction:' rtl', color: '#000'}}>
+        <ListItem style={{direction:' rtl', color: '#20C679'}}>
           {index===0 ? <HomeRoundedIcon/> : (index===1 ? <PersonRoundedIcon/> : <ListAltRoundedIcon/>)}
           <ListItemText onClick={toggleDrawer(false)} className={classes.list__item} primary={item.content} />
         </ListItem>
@@ -149,7 +164,7 @@ export default function AppBarMenu(){
   ))
   const SubMenuTitles=subMenuTitle?.titles?.map((item, index)=>(
       <div className="link" style={{ width: "100%", direction: 'rtl' }}>
-        <ListItem button onClick={index===0 ? handleClick1 : handleClick2} className={classes.list__item}>
+        <ListItem button onClick={index===0 ? handleClick1 : handleClick2} className={classes.list__item} style={{color: '#20C679'}}>
           {index===0 ? <ApartmentIcon/> : <InfoRoundedIcon/>}
           <ListItemText className={classes.list__item} primary={item.content}/>
           {(index===0 ? open1 : open2) ? <ExpandLess /> : <ExpandMore />}
@@ -157,13 +172,14 @@ export default function AppBarMenu(){
       </div>
   ))
   const SubMenuItems=subMenuItems?.items?.map((item, index)=>(
-      <Collapse in={index<4 ? open1 : open2} timeout="auto">
-        <List component="div" disablePadding>
-          <ListItem button sx={{ pl: 4 }}>
-            <Link to={item.path} className="link" style={{ width: "100%",paddingRight: "1em" }}>
+      <Collapse in={index<4 ? open1 : open2} timeout="auto" style={{backgroundColor: 'rgba(0,191,3, 0.05)'}}>
+        <List component="div" >
+          <Link to={item.path} className="link">
+            <ListItem button sx={{ pl: 4 }} className={classes.collapseItem}>
+              {subMenuIcons[index]}
               <ListItemText onClick={toggleDrawer(false)} className={classes.list__item} primary={item.content} />
-            </Link>
-          </ListItem>
+            </ListItem>
+          </Link>
         </List>
       </Collapse>
   ))
