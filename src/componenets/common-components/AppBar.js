@@ -30,7 +30,7 @@ import ListAltRoundedIcon from '@material-ui/icons/ListAltRounded';
 const useStyles = makeStyles({
     list: {
       width: '100%',
-      padding: '0 1em',
+      padding: '1em',
     },
     list__item: {
       textAlign: "right",
