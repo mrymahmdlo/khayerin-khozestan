@@ -2,7 +2,7 @@ import { Grid, Typography } from '@material-ui/core';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Carousel from 'react-multi-carousel';
-import '../common-components/carouselStyle.css';
+import '../common-components/CarouselStyle.css';
 import ImageObj from '../../assets/images/letter of appreciations/ImageObj';
 
 const responsive = {
