@@ -70,7 +70,7 @@ function App() {
             <Route path="/UnderConstruction/:id" component={ProjectDetails} />
             <Route path="/About" component={AboutUs} />
             <Route path="/Appreciations" component={ImagesObj} />
-            <Route path="/" exact component={LandingPage} />
+            <Route path="/" component={LandingPage} />
           </Switch>
           </ScrollToTop>
         </Router>
