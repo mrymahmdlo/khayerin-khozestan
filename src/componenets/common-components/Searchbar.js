@@ -33,71 +33,71 @@ const StyledInput = withStyles((theme) =>
         backgroundColor: "#fff",
         border: `1px solid #fff !important`,
       },
-      //   paddingBottom: 12,
     },
   })
 )(InputBase);
 
 export default function Searchbar() {
-    return (<Grid md={4} item container direction="column">
-              <Hidden mdDown>
-                <div
+  return (
+    <Grid md={4} item container direction="column">
+      <Hidden mdDown>
+        <div
+          style={{
+            padding: "30px",
+            backgroundColor: "#f6f6f6",
+            display: "flex",
+            flexDirection: "column",
+            width: "100%",
+            marginTop: "3em",
+            alignItems: "center",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              width: "100%",
+              justifyContent: "center",
+              direction: "rtl",
+            }}
+          >
+            <Button
+              style={{
+                backgroundColor: "#09cc7f",
+              }}
+              disabled
+            >
+              <SearchIcon style={{ color: "#fff" }} />
+            </Button>
+            <ThemeProvider theme={theme}>
+              <StylesProvider jss={jss}>
+                <StyledInput
+                  placeholder="جست و جو"
                   style={{
-                    padding: "30px",
-                    backgroundColor: "#f6f6f6",
-                    display: "flex",
-                    flexDirection: "column",
                     width: "100%",
-                    marginTop: "3em",
-                    alignItems: "center",
                   }}
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      width: "100%",
-                      justifyContent: "center",
-                      direction: "rtl",
-                    }}
-                  >
-                    <Button
-                      style={{
-                        backgroundColor: "#09cc7f",
-                      }}
-                      disabled
-                    >
-                      <SearchIcon style={{ color: "#fff" }} />
-                    </Button>
-                    <ThemeProvider theme={theme}>
-                      <StylesProvider jss={jss}>
-                        <StyledInput
-                          placeholder="جست و جو"
-                          style={{
-                            width: "100%",
-                          }}
-                        />
-                      </StylesProvider>
-                    </ThemeProvider>
-                  </div>
-                  <div
-                    style={{
-                      width: "100%",
-                      marginTop: "15px",
-                    }}
-                  >
-                    <Button
-                      style={{
-                        backgroundColor: "#09cc7f",
-                        width: "100%",
-                        color: "#fff",
-                        padding: "10px",
-                      }}
-                    >
-                      جست و جو
-                    </Button>
-                  </div>
-                </div>
-                </Hidden>
-                </Grid>
-    );
+                />
+              </StylesProvider>
+            </ThemeProvider>
+          </div>
+          <div
+            style={{
+              width: "100%",
+              marginTop: "15px",
+            }}
+          >
+            <Button
+              style={{
+                backgroundColor: "#09cc7f",
+                width: "100%",
+                color: "#fff",
+                padding: "10px",
+              }}
+            >
+              جست و جو
+            </Button>
+          </div>
+        </div>
+      </Hidden>
+    </Grid>
+  );
 }

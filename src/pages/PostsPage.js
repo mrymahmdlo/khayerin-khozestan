@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Grid } from "@material-ui/core";
 import { CircularProgress, Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import { GetData } from "../services/APIengine";
 import { Link } from "react-router-dom";
-import SearchIcon from "@material-ui/icons/Search";
-import Button from "@material-ui/core/Button";
 import { create } from "jss";
 import rtl from "jss-rtl";
+import Searchbar from "../componenets/common-components/Searchbar";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
+import './PostsPage.css';
 import {
   withStyles,
   createStyles,
@@ -19,12 +18,14 @@ import {
   ThemeProvider,
   jssPreset,
 } from "@material-ui/core";
+
 const theme = createTheme({
   direction: "rtl",
 });
+
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
 
-const StyledInput = withStyles((theme) =>
+const StyledInput = withStyles(() =>
   createStyles({
     root: {},
     input: {
@@ -38,76 +39,15 @@ const StyledInput = withStyles((theme) =>
         backgroundColor: "#fff",
         border: `1px solid #fff !important`,
       },
-      //   paddingBottom: 12,
     },
   })
 )(InputBase);
 
-const useStyles = makeStyles(() => ({
-  root: {
-    flexGrow: 1,
-    marginTop: "70px",
-    marginBottom: "1em",
-    height: "auto",
-  },
-  item: {
-    height: "auto",
-    // padding:'10px 20px'
-    margin: "0px 10px",
-  },
-  image: {
-    height: 200,
-    width: "100%",
-    borderRadius: 3,
-    display: "block",
-  },
-  post: {
-    height: 315,
-    background: "#00303F",
-    color: "#fff",
-    borderRadius: 3,
-    textAlign: "right",
-    cursor: "pointer",
-    transition: "0.25s",
-    "&:hover": {
-      opacity: "0.9",
-    },
-  },
-  news: {
-    display: "flex",
-    flexDirection: "column",
-    backgroundColor: "#fff",
-
-    "& .description": {
-      display: "flex",
-      flexDirection: "column",
-      padding: "20px 15px",
-      margin: "10px 0px",
-      textAlign: "right",
-      boxShadow: "0 10px 20px 0 rgb(221 221 221 / 30%)",
-      "& .title": {
-        fontSize: "17px",
-        fontWeight: "600",
-        margin: "5px 0px",
-        cursor: "pointer",
-        "&:hover": {
-          color: "#09cc7f",
-        },
-      },
-      "& .text": {
-        fontSize: "14px",
-        margin: "5px 0px",
-      },
-    },
-  },
-}));
-
 const NewsComponent = ({ imgSrc, id, item }) => {
-  const classes = useStyles();
 
   return (
     <Link to={`/News/${id}`}>
-      <div className={classes.news}>
+      <div className='posts-news'>
         <div>
           <img src={imgSrc} alt="news" width={"100%"} height={"auto"} />
         </div>
@@ -138,28 +78,15 @@ const NewsComponent = ({ imgSrc, id, item }) => {
 };
 
 export default function NewsPage() {
-  const classes = useStyles();
 
   const [data, setData] = useState(null);
   useEffect(() => {
     GetData(`Tehran/PostGroup`).then((res) => setData(res));
   }, []);
 
-  const [news, setNews] = useState(null);
-  useEffect(() => {
-    GetData(`Tehran/Home`).then((res) => setNews(res));
-  }, []);
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
-  const indexOfLastPage = itemsPerPage * currentPage;
-  const indexOfFirstPage = indexOfLastPage - itemsPerPage;
-  const allItems = data?.posts.length;
-  const currentItems = data?.posts.slice(indexOfFirstPage, indexOfLastPage);
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
   return (
     <>
+      <h1 className='appr-topic'>اخبار و اطلاعیه ها</h1>
       {data ? (
         <div>
           {data ? (
@@ -167,69 +94,12 @@ export default function NewsPage() {
               container
               justifyContent="space-between"
               direction="row-reverse"
-              className={classes.root}
+              cl
+              assName='posts-root'
             >
-              <Grid md={4} item container direction="column">
-                <Hidden mdDown>
-                  <div
-                    style={{
-                      padding: "30px",
-                      backgroundColor: "#f6f6f6",
-                      display: "flex",
-                      flexDirection: "column",
-                      width: "100%",
-                      alignItems: "center",
-                    }}
-                  >
-                    <div
-                      style={{
-                        display: "flex",
-                        width: "100%",
-                        justifyContent: "center",
-                        direction: "rtl",
-                      }}
-                    >
-                      <Button
-                        style={{
-                          backgroundColor: "#09cc7f",
-                        }}
-                        disabled
-                      >
-                        <SearchIcon style={{ color: "#fff" }} />
-                      </Button>
-                      <ThemeProvider theme={theme}>
-                        <StylesProvider jss={jss}>
-                          <StyledInput
-                            placeholder="جست و جو"
-                            style={{
-                              width: "100%",
-                            }}
-                          />
-                        </StylesProvider>
-                      </ThemeProvider>
-                    </div>
-                    <div
-                      style={{
-                        width: "100%",
-                        marginTop: "15px",
-                      }}
-                    >
-                      <Button
-                        style={{
-                          backgroundColor: "#09cc7f",
-                          width: "100%",
-                          color: "#fff",
-                          padding: "10px",
-                        }}
-                      >
-                        جست و جو
-                      </Button>
-                    </div>
-                  </div>
-                </Hidden>
-              </Grid>
-              <Grid item xs={12} md={7} className={classes.item}>
-                {currentItems.map((item) => (
+              <Searchbar />
+              <Grid item xs={12} md={7} className='posts-item'>
+                {data?.posts.slice(0, 10).map((item) => (
                   <Grid>
                     <NewsComponent
                       imgSrc={

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core";
 import ToFarsiNumber from "../common-components/Converter";
 import NumberCreator from "../common-components/NumberCreator";
 import Grid from "@material-ui/core/Grid";
@@ -9,30 +8,7 @@ import Button from "@material-ui/core/Button";
 import "./ProjectDetails.css";
 import { GetData } from "../../services/APIengine";
 
-const useStyles = makeStyles(() => ({
-  content: {
-    margin: "1em auto 0",
-    padding: "2em 2em 5em",
-    backgroundColor: "#F5F4F4",
-    textAlign: "right",
-  },
-  imagesBox: {
-    margin: "1em",
-    textAlign: "center",
-    backgroundColor: "#fff",
-    borderRadius: "6px",
-    padding: "1em",
-  },
-  images: {
-    width: "auto",
-    maxHeight: "80%",
-    height: "100%",
-    borderRadius: "6px",
-  },
-}));
-
 const ProjectDetails = () => {
-  const classes = useStyles();
   const { id } = useParams();
   const [data, setData] = useState();
   useEffect(() => {
@@ -45,7 +21,7 @@ const ProjectDetails = () => {
   const endDate = ed.toLocaleDateString("fa-IR");
 
   return (
-    <div className={classes.content}>
+    <div className='project-content'>
       <div className="Details">
         <div className="Card">
           <img
@@ -103,14 +79,14 @@ const ProjectDetails = () => {
         </div>
       </div>
 
-      <div className={classes.imagesBox}>
+      <div className='images-box'>
         <h2 style={{ margin: "0em auto" }}>عکس های پروژه</h2>
         <Grid lg={4} sm={6} xs={12}>
           {data?.project?.imageIds.map((item) => (
             <img
               src={`http://charity.mykanoon.ir/File/Get/${item}`}
               alt="projectPics"
-              className={classes.images}
+              className='project-images'
               key={item.id}
             />
           ))}

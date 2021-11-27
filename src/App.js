@@ -16,6 +16,7 @@ import AboutUs from "./componenets/aboutSection/AboutUs";
 import Header from "./componenets/common-components/Header";
 import Footer from "./componenets/common-components/Footer";
 import { ArrowUpward } from "@material-ui/icons";
+import ScrollToTop from "./componenets/common-components/ScrollToTop";
 
 function App() {
   const [visible, setVisible] = useState(false);
@@ -42,8 +43,9 @@ function App() {
     <div className="App">
       <Container maxWidth="lg" style={{ minHeight: "90vh" }}>
         <Router>
+          <ScrollToTop>
           <Header />
-          <div style={{ marginBottom: "5em" }}></div>
+          <div style={{ marginBottom: "3em" }}></div>
           <div
             className="arrow"
             id="topicon"
@@ -68,8 +70,9 @@ function App() {
             <Route path="/UnderConstruction/:id" component={ProjectDetails} />
             <Route path="/About" component={AboutUs} />
             <Route path="/Appreciations" component={ImagesObj} />
-            <Route path="/" exact component={LandingPage} />
+            <Route path="/" component={LandingPage} />
           </Switch>
+          </ScrollToTop>
         </Router>
       </Container>
       <Footer />

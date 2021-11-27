@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import {
-  makeStyles,
   Typography,
   withStyles,
   createStyles,
@@ -15,149 +14,20 @@ import {
 import Grid from "@material-ui/core/Grid";
 import { CircularProgress } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import SearchIcon from "@material-ui/icons/Search";
 import { create } from "jss";
 import rtl from "jss-rtl";
 import ToFarsiNumber from "../componenets/common-components/Converter";
 import NumberCreator from "../componenets/common-components/NumberCreator";
 import PersonIcon from "@material-ui/icons/Person";
-import {useParams} from 'react-router';
-import Hero2 from "../assets/images/hero2.png";
+import { useParams } from "react-router";
+import SearchIcon from "@material-ui/icons/Search";
+import './ProjectsPage.css';
 
 const base = "http://charity.mykanoon.ir/api";
 
-const useStyles = makeStyles(() => ({
-  content: {
-    marginTop: '-2em',
-    padding: "0px 40px",
-    "@media (max-width: 800px)": {
-      padding: "2em 0em 5em",
-    },
-  },
-  project: {
-    backgroundColor: "#16697a",
-    color: "#fff",
-    margin: "0.7em",
-    borderRadius: "6px",
-  },
-  projectPic: {
-    backgroundColor: "#fff",
-    margin: "0.8em auto",
-    height: 175,
-    maxHeight: "40%",
-    minHeight: "40%",
-    maxWidth: "90%",
-    borderRadius: "6px",
-  },
-  info: {
-    backgroundColor: "#16697a",
-    color: "#fff",
-    margin: "0.8em auto",
-    textAlign: "center",
-  },
-  title: {
-    backgroundColor: "#fff",
-    color: "#212121",
-    width: "90%",
-    margin: "0 auto 0.5em",
-    borderRadius: "4px",
-    "@media (max-width: 800px)": {
-      fontSize: 18,
-      width: "95%",
-    },
-  },
-  button: {
-    backgroundColor: "#00303F",
-    color: "#fff",
-    width: "100%",
-    borderRadius: "0 0 6px 6px",
-    paddingTop: "1em",
-    paddingBottom: "1em",
-    "&:hover": {
-      backgroundColor: "#00171a",
-    },
-  },
-  projectItem: {
-    display: "flex",
-    flexDirection: "column",
-    backgroundColor: "#fff",
-    marginBottom: "20px",
-    width: "100%",
-    "& .description": {
-      display: "flex",
-      flexDirection: "column",
-      padding: "0px 15px",
-      paddingBottom: "23px",
-      marginBottom: "15px",
-      textAlign: "right",
-      boxShadow: "0 10px 20px 0 rgb(221 221 221 / 30%)",
-      "& .title": {
-        fontSize: "17px",
-        fontWeight: "700",
-        margin: "10px 0px",
-        cursor: "pointer",
-        "&:hover": {
-          color: "#09cc7f",
-        },
-      },
-      "& .text": {
-        fontSize: "14px",
-        color: "#999",
-      },
-    },
-  },
-  category: {
-    padding: "30px 40px",
-    backgroundColor: "#f6f6f6",
-    display: "flex",
-    flexDirection: "column",
-    width: "100%",
-    alignItems: "center",
-    marginTop: "15px",
-    "& .divider": {
-      borderBottom: "1px solid #ece6e6",
-      width: "100%",
-      margin: "15px 0px",
-    },
-    "& .title": {
-      fontSize: "20px",
-      fontWeight: "500",
-      color: "#2d2d2d",
-      textAlign: "right",
-      width: "100%",
-      letterSpacing: "-1.2px",
-    },
-    "& .item": {
-      fontSize: "16px",
-      color: "#10285d",
-      letterSpacing: "-1.2px",
-      textAlign: "right",
-      width: "100%",
-      fontWeight: "300",
-      "&:hover": {
-        color: "#09cc7f",
-        cursor: "pointer",
-      },
-    },
-  },
-  header: {
-    backgroundImage: `url(${Hero2})`,
-    height: 250,
-  },
-  headertext: {
-    color: '#072366',
-    fontWeight: "bold",
-    wordSpacing: "-1.2px",
-    paddingBlock: "80px !important",
-    "@media (max-width: 600px)": {
-      fontSize: "2em !important",
-    },
-  },
-}));
-
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
 
-const StyledInput = withStyles((theme) =>
+const StyledInput = withStyles(() =>
   createStyles({
     root: {},
     input: {
@@ -171,7 +41,6 @@ const StyledInput = withStyles((theme) =>
         backgroundColor: "#fff",
         border: `1px solid #fff !important`,
       },
-      //   paddingBottom: 12,
     },
   })
 )(InputBase);
@@ -185,10 +54,9 @@ const ProjectComponent = ({
   id,
   typeId,
 }) => {
-  const classes = useStyles();
 
   return (
-    <div className={classes.projectItem}>
+    <div className='project-item'>
       <div
         style={{
           backgroundColor: "#f6f6f6",
@@ -223,8 +91,6 @@ const ProjectComponent = ({
           <Typography className="title">{title}</Typography>
         </Link>
 
-        <Typography className="text">{/* {description} */}</Typography>
-
         <div className="text">{cityName}</div>
 
         <div className="text">
@@ -252,43 +118,51 @@ const ProjectComponent = ({
 };
 
 export default function AllProjects() {
-  const classes = useStyles();
   const [data, setData] = useState();
   useEffect(() => {
-    fetch(base + "/Tehran/ProjectGroup").then((response) =>
-      response.json().then((response) => setData(response.projects))
-    ).catch((err) => console.log(err));
+    fetch(base + "/Tehran/ProjectGroup")
+      .then((response) =>
+        response.json().then((response) => setData(response.projects))
+      )
+      .catch((err) => console.log(err));
   }, []);
 
   const theme = createTheme({
     direction: "rtl",
   });
 
-  const {status}=useParams();
-  let temp=data;
+  const { status } = useParams();
+  let temp = data;
   let type;
-  status==='half-built' ? type=1 :
-      (status==='overhauled' ? type=2 :
-          (status==='under-construction' ? type=3 :
-              type=4));
-  temp=temp?.filter(item=>item?.typeId===type)
-  let projectsCount=[0,0,0,0];
-  data?.map(item=>(
-      item.typeId===1 ? projectsCount[0]+=1 :
-          (item.typeId===2 ? projectsCount[1]+=1 :
-              (item.typeId===4 ? projectsCount[2]+=1 :
-                  projectsCount[3]+=1))
-  ))
+  status === "half-built"
+    ? (type = 1)
+    : status === "overhauled"
+    ? (type = 2)
+    : status === "under-construction"
+    ? (type = 3)
+    : (type = 4);
+  temp = temp?.filter((item) => item?.typeId === type);
+  let projectsCount = [0, 0, 0, 0];
+  data?.map((item) =>
+    item.typeId === 1
+      ? (projectsCount[0] += 1)
+      : item.typeId === 2
+      ? (projectsCount[1] += 1)
+      : item.typeId === 4
+      ? (projectsCount[2] += 1)
+      : (projectsCount[3] += 1)
+  );
+
+  const pageTitles=['پروژه های نیمه تمام', 'پروژه های بازسازی تخریبی', 'پروژه های در حال انجام', 'پروژه های ساخته شده'];
+  const title=pageTitles[type-1];
 
   return (
     <>
-      <Grid className={classes.header} xs={12}>
-        <Typography className={classes.headertext} variant="h3" component="h3">پروژه های ساخت مدرسه</Typography>
-      </Grid>
+      <h1 className='appr-topic'>{title}</h1>
       {data ? (
-        <div style={{ marginTop: "90px" }}>
+        <div>
           <Grid
-            className={classes.content}
+            className='projects-content'
             container
             justifyContent="space-between"
           >
@@ -332,7 +206,6 @@ export default function AllProjects() {
                       style={{
                         backgroundColor: "#09cc7f",
                       }}
-
                     >
                       <SearchIcon style={{ color: "#fff" }} />
                     </Button>
@@ -366,38 +239,35 @@ export default function AllProjects() {
                   </div>
                 </div>
 
-                <div className={classes.category}>
+                <div className='category'>
                   <Typography className="title">دسته بندی پروژه ها</Typography>
                   <div className="divider"></div>
 
-                  <Link to='/Projects/half-built' className="item">
+                  <Link to="/Projects/half-built" className="item">
                     <Typography>
                       پروژه های نیمه تمام ({projectsCount[0]})
                     </Typography>
                     <div className="divider"></div>
                   </Link>
-                  <Link to='/Projects/overhauled' className="item">
+                  <Link to="/Projects/overhauled" className="item">
                     <Typography>
                       پروژه های بازسازی تخریبی ({projectsCount[1]})
                     </Typography>
                     <div className="divider"></div>
                   </Link>
-                  <Link to='/Projects/completed' className="item">
+                  <Link to="/Projects/completed" className="item">
                     <Typography>
                       پروژه های ساخته شده ({projectsCount[2]})
                     </Typography>
                     <div className="divider"></div>
                   </Link>
-                  <Link to='/Projects/under-construction' className="item">
+                  <Link to="/Projects/under-construction" className="item">
                     <Typography>
                       پروژه های در حال انجام ({projectsCount[3]})
                     </Typography>
                   </Link>
-
-
-
                 </div>
-                <div style={{marginBottom: '2em'}}></div>
+                <div style={{ marginBottom: "2em" }}></div>
               </Grid>
             </Hidden>
           </Grid>

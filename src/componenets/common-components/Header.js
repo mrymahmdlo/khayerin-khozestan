@@ -1,5 +1,5 @@
 import { React } from "react";
-import "./header.css";
+import "./Header.css";
 import {Hidden} from "@material-ui/core";
 import NavBar from "./NavBar";
 import AppBarMenu from "./AppBar";

@@ -2,7 +2,7 @@ import { Grid, Typography } from '@material-ui/core';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Carousel from 'react-multi-carousel';
-import '../common-components/carouselStyle.css';
+import '../common-components/CarouselStyle.css';
 import ImageObj from '../../assets/images/letter of appreciations/ImageObj';
 
 const responsive = {
@@ -22,7 +22,6 @@ const responsive = {
 
 export default function ApCarousel() {
     const {images} = ImageObj ;
-    console.log(images);
     return(
         <Grid container style={{marginBlock: 70,backgroundColor: "#f8fcff"}}>
             <Grid item xs={12}>
@@ -30,7 +29,7 @@ export default function ApCarousel() {
                 موسسه خیرین مدرسه ساز خوزستان
             </Typography>
             <Typography component="p" className="blueText">
-              <Link to="/Appreciations">
+              <Link to="/Appreciations" className="blueText">
                 افتخارات و تقدیرنامه ها
               </Link>
             </Typography>
@@ -48,7 +47,7 @@ export default function ApCarousel() {
             {
             images.map(item =>
               <Link  to="/Appreciations">
-                <img src={item.src} style={{width: "75%",height: "90%"}} alt="appreciations image" key={item.id} />
+                <img src={item.src} style={{width: "75%",height: "90%"}} alt="appreciations" key={item.id} />
               </Link>
             )
             }

@@ -1,6 +1,6 @@
 import { Snackbar } from "@material-ui/core";
 
-const baseUrl = "http://charity.mykanoon.ir/api/";
+ const baseUrl = "http://charity.mykanoon.ir/api/";
 
 const headers = {
   "Content-Type": "application/json",
@@ -25,4 +25,4 @@ const PostData = async (url, dataBody) => {
 };
 
 
-export {PostData , GetData};
+export {PostData , GetData, baseUrl};

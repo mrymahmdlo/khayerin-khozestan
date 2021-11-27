@@ -4,7 +4,7 @@ import Project from './Project';
 import Carousel from "react-multi-carousel";
 import { ThemeProvider } from '@material-ui/core/styles';
 import './Project.css';
-import '../common-components/carouselStyle.css';
+import '../common-components/CarouselStyle.css';
 
 const responsive = {
     desktop: {
