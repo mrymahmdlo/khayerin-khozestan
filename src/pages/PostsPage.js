@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Grid } from "@material-ui/core";
 import { CircularProgress, Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import { GetData } from "../services/APIengine";
 import { Link } from "react-router-dom";
 import { create } from "jss";
 import rtl from "jss-rtl";
 import Searchbar from "../componenets/common-components/Searchbar";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
-import Hero2 from "../assets/images/hero2.png";
+import './PostsPage.css';
 import {
   withStyles,
   createStyles,
@@ -44,83 +43,11 @@ const StyledInput = withStyles(() =>
   })
 )(InputBase);
 
-const useStyles = makeStyles(() => ({
-  root: {
-    flexGrow: 1,
-    marginTop: "70px",
-    marginBottom: "1em",
-    height: "auto",
-  },
-  item: {
-    height: "auto",
-    margin: "0px 10px",
-  },
-  image: {
-    height: 200,
-    width: "100%",
-    borderRadius: 3,
-    display: "block",
-  },
-  post: {
-    height: 315,
-    background: "#00303F",
-    color: "#fff",
-    borderRadius: 3,
-    textAlign: "right",
-    cursor: "pointer",
-    transition: "0.25s",
-    "&:hover": {
-      opacity: "0.9",
-    },
-  },
-  news: {
-    display: "flex",
-    flexDirection: "column",
-    backgroundColor: "#fff",
-
-    "& .description": {
-      display: "flex",
-      flexDirection: "column",
-      padding: "20px 15px",
-      margin: "10px 0px",
-      textAlign: "right",
-      boxShadow: "0 10px 20px 0 rgb(221 221 221 / 30%)",
-      "& .title": {
-        fontSize: "17px",
-        fontWeight: "600",
-        margin: "5px 0px",
-        cursor: "pointer",
-        "&:hover": {
-          color: "#09cc7f",
-        },
-      },
-      "& .text": {
-        fontSize: "14px",
-        margin: "5px 0px",
-      },
-    },
-  },
-  headertext: {
-    color: "#072366",
-    fontWeight: "bold",
-    wordSpacing: "-1.2px",
-    paddingBlock: "80px !important",
-    "@media (max-width: 600px)": {
-      fontSize: "2em !important",
-    },
-  },
-  header: {
-    backgroundImage: `url(${Hero2})`,
-    height: 250,
-  },
-}));
-
 const NewsComponent = ({ imgSrc, id, item }) => {
-  const classes = useStyles();
 
   return (
     <Link to={`/News/${id}`}>
-      <div className={classes.news}>
+      <div className='posts-news'>
         <div>
           <img src={imgSrc} alt="news" width={"100%"} height={"auto"} />
         </div>
@@ -151,7 +78,6 @@ const NewsComponent = ({ imgSrc, id, item }) => {
 };
 
 export default function NewsPage() {
-  const classes = useStyles();
 
   const [data, setData] = useState(null);
   useEffect(() => {
@@ -169,10 +95,10 @@ export default function NewsPage() {
               justifyContent="space-between"
               direction="row-reverse"
               cl
-              assName={classes.root}
+              assName='posts-root'
             >
               <Searchbar />
-              <Grid item xs={12} md={7} className={classes.item}>
+              <Grid item xs={12} md={7} className='posts-item'>
                 {data?.posts.slice(0, 10).map((item) => (
                   <Grid>
                     <NewsComponent
