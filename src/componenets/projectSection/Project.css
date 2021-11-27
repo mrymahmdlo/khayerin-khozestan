@@ -1,3 +1,23 @@
+.project-root{
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0;
+  margin-left: 8px;
+  margin-right: 8px;
+  max-height: 376px;
+  min-height: 376px;
+}
+.project-root>*{
+  padding: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+.project-media{
+  margin-top: 0;
+  height: 174px;
+  max-height: 30%;
+  min-height: 30%;
+}
 .project__item:nth-child(odd) .pcontrs {
   background-color: #16697a;
   color: #fff;
