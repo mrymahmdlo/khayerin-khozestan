@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import { makeStyles } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import "./PhiloDetails.css";
@@ -12,26 +11,7 @@ import numbers from "../../assets/images/numbers-icon (1).png";
 
 const base = "http://charity.mykanoon.ir/api";
 
-const useStyles = makeStyles(() => ({
-  button: {
-    backgroundColor: "#48dd8e",
-    width: "100%",
-    borderRadius: "6px",
-    paddingTop: "1em",
-    paddingBottom: "1em",
-    margin: "1em",
-    display: "block",
-    direction: "ltr",
-    transition: "all 0.5s",
-    "&:hover": {
-      backgroundColor: "#ACDDAC",
-      borderRadius: "20px 4px",
-    },
-  },
-}));
-
 const PhiloDetails = () => {
-  const classes = useStyles();
   const { id } = useParams();
   const [data, setData] = useState();
   useEffect(() => {
